@@ -58,9 +58,6 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.6)
-    jbuilder (2.7.0)
-      activesupport (>= 4.2.0)
-      multi_json (>= 1.2)
     json (1.8.6)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -80,7 +77,6 @@ GEM
       bson (~> 3.0)
       connection_pool (~> 2.0)
       optionable (~> 0.2.0)
-    multi_json (1.12.1)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     optionable (0.2.0)
@@ -170,7 +166,6 @@ DEPENDENCIES
   bson_ext
   byebug
   devise
-  jbuilder (~> 2.0)
   mongoid (~> 4)
   rack-cors
   rails (= 4.2.9)
