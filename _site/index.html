@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Blog &middot; Connector Development Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/connector/public/css/main.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/connector/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/connector/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  
+  <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"> </script>
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true } });
+  </script>
+  
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="sidebar-personal-info">
+      <div class="sidebar-personal-info-section">
+        <a href="http://gravatar.com/97f68b9e757f8150fc0b4c9aed1ee6db">
+          <img src="http://www.gravatar.com/avatar/97f68b9e757f8150fc0b4c9aed1ee6db?s=350" title="View on Gravatar" alt="View on Gravatar" />
+        </a>
+      </div>
+      <div class="sidebar-personal-info-section">
+        <p></p>
+      </div>
+      
+      
+      
+      <div class="sidebar-personal-info-section">
+        <p> Follow me: 
+        
+        
+        
+        <a href="https://github.com/simoncozens">
+          <i class="fa fa-github" aria-hidden="true"></i>
+        </a>
+        
+        |
+        
+        
+        
+        <a href="https://twitter.com/simoncozens">
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+        </a>
+        
+        
+        
+        </p>
+      </div>
+      
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    
+      
+      
+      
+
+      
+
+      <span class="foldable">
+        <a class="sidebar-nav-item active" href="/connector/">
+          Blog
+        </a>
+
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/connector/categories/">
+                Categories
+              </a>
+          
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/connector/tags/">
+                Tags
+              </a>
+          
+        
+      </span>
+
+    
+
+    <span class="sidebar-nav-item">Currently v1.0.0</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+    &copy; 2017 Simon Cozens. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+    </p>
+  </div>
+
+  <div class="sidebar-item">
+    <p>
+    Powered by <a href="http://jekyllrb.com">jekyll</a> and <a href="http://codinfox.github.io">codinfox-lanyon</a>
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/connector/" title="Home" title="Connector Development Blog">
+              <img class="masthead-logo" src="/connector/public/logo.png"/>
+            </a>
+            <small>Building a curated profile service to connect influencers and ideas</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/connector/technical/2017/07/14/Initial-thoughts/">
+        Initial Thoughts
+      </a>
+    </h1>
+
+    <span class="post-date">14 Jul 2017</span>
+     | 
+    
+    
+
+    <article>
+      <p><em>First question: Can we leverage existing code?</em></p>
+
+<p>When I looked at the initial concept document for Connector 2.0, I assumed that the focus was on communication - messaging, group conversations and so on. Because of that, I looked at existing communication tools, and thought that <a href="http://www.discourse.org">Discourse</a> would be a good fit.</p>
+
+<p>Now looking at the revised concept and chatting with Atilla and Andrew, I am less convinced by this. Andrew made it very clear that the priority is not online communication but essentially a catalogue of curated profiles, and that the fundamental value of the package would come from the ability to find, filter and facet individual profiles. The primary model is not the message or the group but the person. Rather than looking at forum software, a closer analogue might be online shopping: instead of choosing products by searching and selecting on a database, you’re choosing people by search and refining a list of profiles.</p>
+
+<p>While Discourse does support custom profile fields, that’s not its core business. It’s a forum/messaging/communication tool; it isn’t a catalogue. So I feel like starting from Discourse would mean trying to beat it into shape to make it something it isn’t. I don’t think it’s going to give us the flexibility that we want. Similar arguments apply for trying to beat the conference management app into being a profile catalogue - if we want to make sure the fundamentals are good, that we have to start with something that is basically aligned with what we want, and I think that Discourse unfortunately isn’t.</p>
+
+<p>And I can’t think of anything that is. Regretfully, I feel like we have to start from scratch here.</p>
+
+<p><em>So, what technologies, then?</em></p>
+
+<p>I think I’m pretty happy with the idea of using Ionic for the app. Settling on an AngularJS solution for the app would suggest to some that we should go with a MEAN stack on the server and have JavaScript end-to-end. There’s admittedly some good reasons for that, but at the same time I don’t think there will be as much overlap between the app and the server side as one might think (I’ll discuss why in a moment) and because of that, I don’t think we should let the tail wag the dog. It’s worth asking the question: Assuming that we can use JSON for data interchange on both sides, what’s the <em>best</em> solution for the server given what we want to achieve?</p>
+
+<p>Now <em>best</em> is totally subjective, and while we often pretend that language choice happens on purely technical grounds, really, it doesn’t. If I wanted to ensure the codebase was open to as wide a variety of developers as possible, I’d write in PHP; that’s a social choice, not a technical one. But right now I’m the lead and only developer, and I have to make a choice that’s both relatively mainstream that other people can come onboard later, but also that I am sufficiently familiar with to get stuff done quickly and well. So with no disrespect to ExpressJS or anything else, <em>we’re going with Rails as the web framework</em>. Something that is nice about Rails is that it gives us resource routing that, as I understand it, can be easily consumed by Angular.</p>
+
+<p>Which brings us to Angular. I was initially reticent about this because, let’s face it, there’s a Hot New JavaScript Framework That Everyone Must Use coming out pretty much every week, and I needed time to be convinced that Angular was the one that was going to win and go mainstream. But it does seem to have done that, and if we’re using Ionic on the app side then it does at least create the possibility of sharing code. So we’ll do that; this will be a learning experience for me, as I haven’t used it before, but what I’ve seen makes sense. And because it won and went mainstream, it also creates the possibility of picking up other front-end developers to work on this later - or at least not alienating people with weird choices of tech. Once again, these are primarily social choices, not technical ones.</p>
+
+<p>And now here’s where I get unsure of myself: what to use for the data store. I’m pretty sure we want a document database, something NoSQL. And I love the idea that people are wodges of JSON that we send from the database to the front-end or to the app to render in Angular. (I’m even thinking we Base64-encode profile pictures and throw them into the document so that everything that the system knows about a person is in one easily-synced bit of JSON, rather than scattered in different files.) Anyway, the document approach makes sense to me.</p>
+
+<p>The fact that we want a very flexible approach to profile fields and allowing people to give us all sorts of different kinds of data about themselves and their journey also pushes me towards the document database approach and away from a SQL database. So one obvious way to go would be MongoDB, and again, MongoDB/Rails is not an unfamiliar stack - they work well together and we can find people with that kind of skillset.</p>
+
+<p>At the same time, one of the fundamental needs is for search, filtering and faceting to work well. Naturally I would be reaching for ElasticSearch here, and this is where the dilemma comes: we could use ES for the document repository and search; we could use MongoDB for both; we could use Mongo for data and ES for search.</p>
+
+<p>Using MongoDB for both means getting Mongo to facet and filter well, which seems to be <a href="https://www.mongodb.com/blog/post/faceted-search-with-mongodb">a bit of a fight</a>. Using ElasticSearch for both makes sense to me, and I’ve done it before. Because using ES and Mongo together <em>seems</em> crazy: two NoSQL document database server in the same app just sounds like too many. You need to replicate exactly the same data in two places, which is generally an architectural no-no. And yet, there’s benefit to having search done by something that does search well.</p>
+
+<p>So why use Mongo at all? I think what has swung it for me is that we aren’t just dealing with profiles. Down the track we will want to be storing information about messages, groups and so on. We’re not going to be searching everything, and Mongo handles data updates and retrievals better than ES does.</p>
+
+<p>I think until convinced otherwise that I am going to follow the YAGNI (You Ain’t Gonna Need It) approach here: I’m going to start just by using Mongo, and having the battle with Mongo to make faceted search work. If I can’t get that to go as nicely as I want, then I will bring in ElasticSearch alongside it. But I’m not convinced about this approach and open to other suggestions.</p>
+
+<p><em>The site and the app will need to be different</em></p>
+
+<p>One of the reasons for shying away from ExpressJS - other than the obvious one that I don’t know it - is that I’m not convinced that there will be major opportunities for code reuse between the web site and the app, beyond what we get by using Angular on both. This is because of the need for the profile database to be made available offline and stored securely. And also, it’s got to be fast and memory efficient, which means I want the data we need to be available on the device.</p>
+
+<p>Now, needless to say, we ain’t going to be running Mongo and/or Elasticsearch on our iPhones. One implication of this: we need to have separate online and offline search capabilities, and offline search is going to be much less featureful than online - but even so, it still needs to work.</p>
+
+<p>So how do we store our however-many-thousand JSON profiles securely on the device? We could do one big encrypted JSON file than we decrypt in memory, but that gets yucky very quickly even before you think about how to do a full-text search on it. We could do lots of little encrypted JSON files, and that’s just as bad if not more so.</p>
+
+<p>I think the direction I would head in is a simple encrypted SQLite database (see <a href="https://github.com/litehelpers/Cordova-sqlcipher-adapter">sqlcipher</a>) Within the database, create columns for anything that will get displayed in a list and so needs to be accessed quickly (e.g. full name, profile pic?) and one column for the JSON blob. (I don’t think we need one column for last updated date, because we just ask the server for anything changed since the last sync.)</p>
+
+<p>So we need to be using local data instead of remote data (again for speed and memory access); we will need lots of Javascript to marshal access to our SQL-based profile database; and that’s why it at least smells to me like the amount of code sharing between server and app is going to be pretty limited. It would be lovely if they could both be based on the same technology, but life is sometimes not lovely.</p>
+
+<p>So, in summary I think we want an Ionic / SQLite app talking to a Rails / Mongo / Angular server. I might be wrong, but at least I’ve thought about it.</p>
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/connector/technical/2017/07/14/Initial-thoughts/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/connector/technical/2017/07/14/Initial-thoughts/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <span class="pagination-item older">Older</span>
+  
+  
+    <span class="pagination-item newer">Newer</span>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if (target === toggle) {
+            checkbox.checked = !checkbox.checked;
+            e.preventDefault();
+          } else if (checkbox.checked && !sidebar.contains(target)) {
+            /* click outside the sidebar when sidebar is open */
+            checkbox.checked = false;
+          }
+        }, false);
+      })(document);
+    </script>
+    
+    <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', '', 'auto');
+ga('send', 'pageview');
+    </script>
+    
+  </body>
+  
+  <script id="dsq-count-scr" src="//simoncozens.disqus.com/count.js" async></script>
+  
+</html>
