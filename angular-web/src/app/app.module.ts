@@ -5,16 +5,25 @@ import { AlertModule } from 'ngx-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { HttpModule } from '@angular/http';
+import { PersonComponent } from './person.component';
+import { PersonService } from './person.service';
+
+import {NgxPaginationModule} from 'ngx-pagination';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PersonComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AlertModule.forRoot()
+    HttpModule,
+    AlertModule.forRoot(),
+    NgxPaginationModule
   ],
-  providers: [],
+  providers: [ PersonService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
