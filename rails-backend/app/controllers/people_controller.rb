@@ -4,10 +4,16 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = Person.page(params[:page])
     respond_to do |format|
       format.html
-      format.json { render json: @people }
+      format.json {
+        render :json => {
+          :current_page => @people.current_page,
+          :total_entries => @people.total_count,
+          :entries => @people
+        }
+      }
     end
   end
 
