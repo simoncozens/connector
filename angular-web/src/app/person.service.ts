@@ -12,9 +12,13 @@ export class PersonService {
 
   constructor(private http: Http) { }
 
-  getPeople() {
+  getPeople(page: number = 1) {
     return this.http
-      .get(this.peopleListUrl)
+      .get(this.peopleListUrl,
+        {method: "GET",
+        params: {page: page}
+        }
+      )
       .toPromise()
       .then(response=>response.json() as Person[])
       .catch(this.handleError);

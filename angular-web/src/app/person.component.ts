@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Person } from './person';
 import { PersonService } from './person.service';
+import { PagedResults } from './pagedresults';
 
 @Component({
   selector: 'people',
@@ -9,13 +10,19 @@ import { PersonService } from './person.service';
 
 })
 export class PersonComponent implements OnInit {
-  people: Person[];
-  page: number = 1;
+  result: PagedResults<Person>;
+  _page: number = 1;
   constructor(private personService: PersonService) {
   }
-  ngOnInit(): void {
-    this.personService.getPeople()
-      .then(people => this.people = people);
+  getPeople() {
+    this.personService.getPeople(this._page)
+      .then(result => this.result = result);
   }
+  ngOnInit(): void { this.getPeople() }
+  @Input() set page(value: number) {
+    this._page = value
+    this.getPeople()
+  }
+  get page() { return this._page }
 
 }

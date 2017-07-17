@@ -1,6 +1,6 @@
 <pagination-controls (pageChange)="page = $event"></pagination-controls>
 
-<div class="person row" *ngFor="let person of people | paginate: { itemsPerPage: 10, currentPage: page }">
+<div class="person row" *ngFor="let person of result.entries | paginate: { itemsPerPage: 10, currentPage: page, totalItems: result.total_entries }">
   <div class="col-xs-2"><img src="http://via.placeholder.com/150x150"/></div>
   <div class="col-xs-9">
     <h3>{{person.name}}</h3>
