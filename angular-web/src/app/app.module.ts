@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { HttpModule } from '@angular/http';
 import { PersonComponent } from './person.component';
+import { NavbarComponent } from './navbar.component';
 import { PersonService } from './person.service';
 
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -14,6 +15,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
     PersonComponent
   ],
   imports: [
