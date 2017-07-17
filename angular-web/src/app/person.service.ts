@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -10,10 +10,10 @@ export class PersonService {
   // Define the routes we are going to interact with
   private peopleListUrl = 'http://127.0.0.1:3000/people.json';
 
-  constructor(private http: Http) { }
+  constructor(public authHttp: AuthHttp) { }
 
   getPeople(page: number = 1) {
-    return this.http
+    return this.authHttp
       .get(this.peopleListUrl,
         {method: "GET",
         params: {page: page}

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AlertModule } from 'ngx-bootstrap';
+import { ModalModule } from 'ngx-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,7 +8,12 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { PersonComponent } from './person.component';
 import { NavbarComponent } from './navbar.component';
+import { LoginComponent } from './login.component';
 import { PersonService } from './person.service';
+import { AuthModule } from './auth.module';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {NgxPaginationModule} from 'ngx-pagination';
 
@@ -16,16 +21,19 @@ import {NgxPaginationModule} from 'ngx-pagination';
   declarations: [
     AppComponent,
     NavbarComponent,
-    PersonComponent
+    PersonComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    AlertModule.forRoot(),
-    NgxPaginationModule
+    ModalModule.forRoot(),
+    NgxPaginationModule,
+    AuthModule,
+    ReactiveFormsModule
   ],
-  providers: [ PersonService ],
+  providers: [ PersonService, AuthService, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
