@@ -17,7 +17,8 @@ end
 
 gem 'mongoid', '~> 4'
 gem 'bson_ext'
-gem 'devise'
+gem 'sorcery'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'faker'
 gem 'kaminari-mongoid'
+gem 'jwt'
