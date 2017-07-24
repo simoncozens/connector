@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { Person } from './person';
 
 @Injectable()
 export class AuthService {
@@ -15,6 +16,17 @@ export class AuthService {
 
   loggedIn() {
     return tokenNotExpired();
+  }
+
+  loggedInUser() :Person {
+    let p:Person = JSON.parse(localStorage.getItem("myself"))
+    // If no p, then get one via JSON
+    return p
+  }
+
+  setLoggedInUser(p: Person) {
+    console.log(p)
+    localStorage.setItem("myself", JSON.stringify(p))
   }
 
   stashJWT(response: string) {

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule, BsDropdownModule } from 'ngx-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +11,7 @@ import { PersonComponent } from './person.component';
 import { NavbarComponent } from './navbar.component';
 import { LoginComponent } from './login.component';
 import { HomeComponent } from './home.component';
+import { EditProfileComponent } from './editprofile.component';
 
 import { PersonService } from './person.service';
 import { AuthModule } from './auth.module';
@@ -27,13 +28,15 @@ import {NgxPaginationModule} from 'ngx-pagination';
     PeopleComponent, FollowsComponent,
     PersonComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
     ModalModule.forRoot(),
+    BsDropdownModule.forRoot(),
     NgxPaginationModule,
     AuthModule,
     ReactiveFormsModule

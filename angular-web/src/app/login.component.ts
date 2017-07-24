@@ -31,6 +31,7 @@ export class LoginComponent {
   private handleLoginSuccess(response: Response) {
     let parsed = response.json()
     this.auth.stashJWT(parsed["token"])
+    this.auth.setLoggedInUser(parsed)
     this.gotoNext()
   }
 

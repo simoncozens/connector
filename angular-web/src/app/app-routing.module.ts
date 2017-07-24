@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PeopleComponent, FollowsComponent } from './people.component';
 import { PersonComponent } from './person.component';
+import { EditProfileComponent } from './editprofile.component';
 import { LoginComponent } from './login.component';
 import { HomeComponent } from './home.component';
 
@@ -27,9 +28,8 @@ const routes: Routes = [
     component: FollowsComponent,
     canActivate: [AuthGuard]
   },
-  { path: 'home',
-    component: HomeComponent,
-  },
+  { path: 'home', component: HomeComponent, },
+  { path: 'edit', component: EditProfileComponent, },
   {
     path: '',
     redirectTo: "/home",
