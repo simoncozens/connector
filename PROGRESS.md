@@ -1,0 +1,28 @@
+# Phase 1 Spike
+
+- [ ] Authentication:
+  - [ ] Grab JWT from response and stash
+  - [ ] Error report on failure
+- [ ] Apply for account
+- [ ] Edit profile
+- [ ] Save favourites
+- [ ] Annotations
+- [ ] Security and visibility level
+- [ ] Offline mode
+- [ ] CVS/ICS export
+- [ ] Search
+  - [ ] Basic search
+  - [ ] Advanced/field search
+  - [ ] Faceting
+- [ ] Localisation
+  - [ ] User language selection
+  - [ ] Automatic translation for profiles
+- [ ] Interface with other services
+  - [ ] Push notifications
+  - [ ] Salesforce
+  - [ ] FormAssembly(?)
+- [ ] Security
+  - [ ] Phishing detection
+  - [ ] Account lockout
+  - [ ] Unusual IP detection?
+- [ ] Analytics
