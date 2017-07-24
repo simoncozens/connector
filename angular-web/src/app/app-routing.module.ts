@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PersonComponent } from './person.component';
+import { PeopleComponent } from './people.component';
 import { LoginComponent } from './login.component';
 import { HomeComponent } from './home.component';
 
@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'people',
-    component: PersonComponent,
+    component: PeopleComponent,
     data: { title: 'People List' },
     canActivate: [AuthGuard]
   },

@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpModule } from '@angular/http';
-import { PersonComponent } from './person.component';
+import { PeopleComponent } from './people.component';
 import { NavbarComponent } from './navbar.component';
 import { LoginComponent } from './login.component';
 import { HomeComponent } from './home.component';
@@ -22,7 +22,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   declarations: [
     AppComponent,
     NavbarComponent,
-    PersonComponent,
+    PeopleComponent,
     LoginComponent,
     HomeComponent
   ],

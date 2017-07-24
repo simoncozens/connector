@@ -5,11 +5,11 @@ import { PagedResults } from './pagedresults';
 
 @Component({
   selector: 'people',
-  templateUrl: './person.component.html',
-    styleUrls: ['./person.component.sass']
+  templateUrl: './people.component.html',
+    styleUrls: ['./people.component.sass']
 
 })
-export class PersonComponent implements OnInit {
+export class PeopleComponent implements OnInit {
   result: PagedResults<Person>;
   _page: number = 1;
   constructor(private personService: PersonService) {
