@@ -13,7 +13,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class PeopleComponent implements OnInit {
   result: PagedResults<Person>;
   _page: number = 1;
-  constructor(private personService: PersonService, private route: ActivatedRoute) {
+  constructor(public personService: PersonService, private route: ActivatedRoute) {
   }
   getPeople() {
     this.route.params.subscribe(params => {
@@ -27,5 +27,16 @@ export class PeopleComponent implements OnInit {
     this.getPeople()
   }
   get page() { return this._page }
+}
 
+@Component({
+  selector : 'follows',
+  templateUrl: './people.component.html',
+  styleUrls: ['./people.component.sass']
+})
+export class FollowsComponent extends PeopleComponent {
+  getPeople() {
+    this.personService.getFollows(this._page)
+      .then(result => this.result = result);
+  }
 }

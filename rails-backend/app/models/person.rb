@@ -19,7 +19,7 @@ class Person
   end
 
   def follow!(user)
-    follows.create(followed_user: user)
+    follows.create(followed_user_id: user.id)
   end
 
   def unfollow!(user)

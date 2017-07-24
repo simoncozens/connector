@@ -3,4 +3,5 @@ export class Person {
   name: string;
   email: string;
   intro_bio: string;
+  followed: boolean;
 }

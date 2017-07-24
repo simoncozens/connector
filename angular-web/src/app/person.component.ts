@@ -22,4 +22,14 @@ export class PersonComponent implements OnInit {
         .catch((error) => console.log(error))
     })
   }
+
+  follow(): void {
+    this.person.followed = true
+    this.personService.follow(this.person.id)
+  }
+  unfollow(): void {
+    this.person.followed = false
+    this.personService.unfollow(this.person.id)
+  }
+
 }

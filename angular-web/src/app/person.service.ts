@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { AppSettings } from './app.settings';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -8,15 +9,16 @@ import { Person } from './person';
 @Injectable()
 export class PersonService {
   // Define the routes we are going to interact with
-  private peopleListUrl = 'http://127.0.0.1:3000/people.json';
-  private personShowUrl = 'http://127.0.0.1:3000/people/';
+  private peopleListUrl = AppSettings.API_ENDPOINT+'/people.json';
+  private personUrl = AppSettings.API_ENDPOINT+'/people/';
+  private followUrl = AppSettings.API_ENDPOINT+'/people/following';
 
   constructor(public authHttp: AuthHttp) { }
 
-  getPeople(page: number = 1, params = {}) {
+  getPeople(page: number = 1, params = {}, url = this.peopleListUrl) {
     var myParams:any = Object.assign({"page": page},params);
     return this.authHttp
-      .get(this.peopleListUrl,
+      .get(url,
         {method: "GET",
         params: myParams
         }
@@ -26,14 +28,33 @@ export class PersonService {
       .catch(this.handleError);
   }
 
+  getFollows(page: number = 1) {
+    return this.getPeople(page, {}, this.followUrl)
+  }
+
   getPerson(id: string) {
     return this.authHttp
-      .get(this.personShowUrl+id)
+      .get(this.personUrl+id)
       .toPromise()
       .then(response=>response.json() as Person)
       .catch(this.handleError);
   }
 
+  follow(id: string) {
+    return this.authHttp.get(this.personUrl+id+"/follow")
+      .toPromise()
+      .then(response=>response.json() as Person)
+      .catch(this.handleError);
+
+  }
+
+  unfollow(id: string) {
+    return this.authHttp.get(this.personUrl+id+"/unfollow")
+      .toPromise()
+      .then(response=>response.json() as Person)
+      .catch(this.handleError);
+
+  }
 
   // Implement a method to handle errors if any
   private handleError(error: any): Promise<any> {

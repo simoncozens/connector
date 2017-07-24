@@ -3,13 +3,13 @@
 - [x] Authentication
 - [ ] Apply for account
 - [ ] Edit profile
-- [ ] Save favourites
+- [x] Save favourites
 - [ ] Annotations
 - [ ] Security and visibility level
 - [ ] Offline mode
 - [ ] CVS/vCard export
 - [ ] Search
-  - [ ] Basic search
+  - [x] Basic search
   - [ ] Advanced/field search
   - [ ] Faceting
 - [ ] Localisation

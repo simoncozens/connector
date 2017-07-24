@@ -5,8 +5,16 @@
     <a *ngIf="person.email" href="mailto:{{person?.email}}" class="btn-lg">
       <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
     </a>
-    <br>
+    <div class="strut"></div>
       <span class="role label label-info" *ngFor="let role of person?.roles">{{role}}</span>
+    <div class="strut"></div>
+    <div *ngIf="person.followed">
+      <button type="button" (click)="unfollow()" class="btn btn-primary">Following</button>
+    </div>
+    <div *ngIf="!person.followed">
+      <button type="button" (click)="follow()" class="btn btn-default">Follow</button>
+    </div>
+
   </div>
 </div>
 

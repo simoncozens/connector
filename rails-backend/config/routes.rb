@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       get 'follow'
       get 'unfollow'
     end
+    collection do
+      get 'following'
+    end
   end
   match '/login', to: "auth#login", via: [:post]
 end
