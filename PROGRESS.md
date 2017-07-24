@@ -9,7 +9,7 @@
 - [ ] Annotations
 - [ ] Security and visibility level
 - [ ] Offline mode
-- [ ] CVS/ICS export
+- [ ] CVS/vCard export
 - [ ] Search
   - [ ] Basic search
   - [ ] Advanced/field search
