@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Person } from './person';
 import { PersonService } from './person.service';
 import { PagedResults } from './pagedresults';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'people',
@@ -12,11 +13,13 @@ import { PagedResults } from './pagedresults';
 export class PeopleComponent implements OnInit {
   result: PagedResults<Person>;
   _page: number = 1;
-  constructor(private personService: PersonService) {
+  constructor(private personService: PersonService, private route: ActivatedRoute) {
   }
   getPeople() {
-    this.personService.getPeople(this._page)
-      .then(result => this.result = result);
+    this.route.params.subscribe(params => {
+      this.personService.getPeople(this._page, params)
+        .then(result => this.result = result);
+    })
   }
   ngOnInit(): void { this.getPeople() }
   @Input() set page(value: number) {

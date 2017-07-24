@@ -1,5 +1,4 @@
-
-<div class="person row">
+<div class="person row" *ngIf="person">
   <div class="col-xs-2"><img src="http://via.placeholder.com/150x150"/></div>
   <div class="col-xs-9">
     <h3>{{person?.name}}</h3>
@@ -23,12 +22,20 @@
 
 <div class="person row">
   <div class="col-xs-2 text-muted"> Experience </div>
-  <div class="col-xs-9"> {{person?.experience}} </div>
+  <div class="col-xs-9">
+    <span  *ngFor="let e of person?.experience; let last = last">
+      <a [routerLink]="['/people', {'experience':e}]">{{e}}</a><span *ngIf="!last">, </span>
+    </span>
+  </div>
 </div>
 
 <div class="person row">
   <div class="col-xs-2 text-muted"> Regions </div>
-  <div class="col-xs-9"> {{person?.regions}} </div>
+  <div class="col-xs-9"> 
+    <span  *ngFor="let r of person?.regions; let last = last">
+      <a [routerLink]="['/people', {'region':r}]">{{r}}</a><span *ngIf="!last">, </span>
+    </span>
+  </div>
 </div>
 
 <div *ngFor="let affiliation of person?.affiliations; let i = index" class="person">

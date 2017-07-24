@@ -13,11 +13,12 @@ export class PersonService {
 
   constructor(public authHttp: AuthHttp) { }
 
-  getPeople(page: number = 1) {
+  getPeople(page: number = 1, params = {}) {
+    var myParams:any = Object.assign({"page": page},params);
     return this.authHttp
       .get(this.peopleListUrl,
         {method: "GET",
-        params: {page: page}
+        params: myParams
         }
       )
       .toPromise()
