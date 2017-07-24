@@ -11,4 +11,18 @@ class Person
   field :affiliations, type: Array
   field :experience, type: Array
   field :regions, type: Array
+
+  has_many :follows, :dependent => :destroy
+
+  def follow!(user)
+    follows.create(followed_user: user)
+  end
+
+  def unfollow!(user)
+    follows.where(followed_user_id: user.id).destroy
+  end
+
+  def following?(user)
+    follows.where(followed_user_id: user.id).exists?
+  end
 end

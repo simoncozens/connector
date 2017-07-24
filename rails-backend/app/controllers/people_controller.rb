@@ -21,7 +21,27 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
-    render :json => @person
+    followed = current_user.following?(@person)
+    render :json => @person.as_json.merge({"followed": followed})
+  end
+
+  # Following
+
+  def follow
+    current_user.follow!(@person)
+  end
+
+  def unfollow
+    current_user.unfollow!(@person)
+  end
+  def following
+    @people = current_user.follows.page(params[:page]).map(&:person)
+    format.json {
+      render :json => {
+        :current_page => @people.current_page,
+        :total_entries => @people.total_count,
+        :entries => @people
+      }
   end
 
   # GET /people/new
