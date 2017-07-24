@@ -1,11 +1,11 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate!
-
+  before_action :authenticate!
   # GET /people
   # GET /people.json
   def index
-    @people = Person.page(params[:page])
+    page = params[:page] || 1
+    @people = Person.search_from_params(params).page(page)
     respond_to do |format|
       format.html
       format.json {
@@ -42,6 +42,7 @@ class PeopleController < ApplicationController
         :total_entries => @people.total_count,
         :entries => @people
       }
+    }
   end
 
   # GET /people/new

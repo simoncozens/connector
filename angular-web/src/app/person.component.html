@@ -33,7 +33,7 @@
   <div class="col-xs-2 text-muted"> Regions </div>
   <div class="col-xs-9"> 
     <span  *ngFor="let r of person?.regions; let last = last">
-      <a [routerLink]="['/people', {'region':r}]">{{r}}</a><span *ngIf="!last">, </span>
+      <a [routerLink]="['/people', {'regions':r}]">{{r}}</a><span *ngIf="!last">, </span>
     </span>
   </div>
 </div>

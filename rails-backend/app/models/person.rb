@@ -14,6 +14,10 @@ class Person
 
   has_many :follows, :dependent => :destroy
 
+  def self.searchable_fields
+    fields.map{|x|x[0]} - ["crypted_password","salt"]
+  end
+
   def follow!(user)
     follows.create(followed_user: user)
   end
@@ -24,5 +28,13 @@ class Person
 
   def following?(user)
     follows.where(followed_user_id: user.id).exists?
+  end
+
+  def self.search_from_params(params)
+    clause = params.slice(*searchable_fields)
+    if params["fts"]
+      clause[:$text] = { :$search => params["fts"] }
+    end
+    self.where(clause)
   end
 end
