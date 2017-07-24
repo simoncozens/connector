@@ -3,7 +3,7 @@
 <div class="person row" *ngFor="let person of result.entries | paginate: { itemsPerPage: 10, currentPage: page, totalItems: result.total_entries }">
   <div class="col-xs-2"><img src="http://via.placeholder.com/150x150"/></div>
   <div class="col-xs-9">
-    <h3>{{person.name}}</h3>
+    <h3><a [routerLink]="['/person',person._id.$oid]">{{person.name}}</a></h3>
       <span class="role label label-info" *ngFor="let role of person.roles">{{role}}</span>
 
     <div *ngIf="person.affiliations && person.affiliations[0]">

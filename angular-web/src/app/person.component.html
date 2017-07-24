@@ -2,15 +2,55 @@
 <div class="person row">
   <div class="col-xs-2"><img src="http://via.placeholder.com/150x150"/></div>
   <div class="col-xs-9">
-    <h3>{{person.name}}</h3>
-      <span class="role label label-info" *ngFor="let role of person.roles">{{role}}</span>
+    <h3>{{person?.name}}</h3>
+    <a *ngIf="person.email" href="mailto:{{person?.email}}" class="btn-lg">
+      <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+    </a>
+    <br>
+      <span class="role label label-info" *ngFor="let role of person?.roles">{{role}}</span>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-xs-2"> Experience: </div>
-  <div class="col-xs-9">
-      {{person.experience}}
+<div class="person row">
+  <div class="col-xs-2 text-muted"> Preferred Method of Contact </div>
+  <div class="col-xs-9"> {{person?.preferred_contact}} </div>
+</div>
+
+<div class="person row">
+  <div class="col-xs-2 text-muted"> Introductory Bio </div>
+  <div class="col-xs-9"> {{person?.intro_bio}} </div>
+</div>
+
+<div class="person row">
+  <div class="col-xs-2 text-muted"> Experience </div>
+  <div class="col-xs-9"> {{person?.experience}} </div>
+</div>
+
+<div class="person row">
+  <div class="col-xs-2 text-muted"> Regions </div>
+  <div class="col-xs-9"> {{person?.regions}} </div>
+</div>
+
+<div *ngFor="let affiliation of person?.affiliations; let i = index" class="person">
+  <div class="row">
+    <div class="col-xs-2 text-muted">
+        <span *ngIf="i==0">Primary</span>
+        <span *ngIf="i!=0">Other</span>
+        Organisation
+    </div>
+    <div class="col-xs-9"> {{affiliation.organisation}} </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 text-muted">
+        <span *ngIf="i==0">Primary</span>
+        <span *ngIf="i!=0">Other</span>
+        Position
+    </div>
+    <div class="col-xs-9"> {{affiliation.position}} </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 text-muted"> Organisation Website </div>
+    <div class="col-xs-9"> {{affiliation.website}} </div>
   </div>
 </div>
 
