@@ -17,10 +17,14 @@ const routes: Routes = [
     data: { title: 'People List' },
     canActivate: [AuthGuard]
   },
-  { path: '',
+  { path: 'home',
     component: HomeComponent,
-    pathMatch: 'full'
   },
+  {
+    path: '',
+    redirectTo: "/home",
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
