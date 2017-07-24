@@ -16,20 +16,15 @@ export class AuthService {
   loggedIn() {
     return tokenNotExpired();
   }
-  tryLogin(credentials: object) {
-    console.log(credentials)
+
+  stashJWT(response: string) {
+    localStorage.setItem("token", response)
+  }
+  makeLoginAttempt(credentials: any): Promise<any> {
     return this.http.post(
       this.loginUrl,
       JSON.stringify(credentials),
       {headers: this.headers}
     ).toPromise()
-    .then(response=>console.log(response))
-    .catch(this.handleError);
-  }
-
-  // Implement a method to handle errors if any
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
   }
 }
