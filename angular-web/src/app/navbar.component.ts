@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'navbar',
@@ -7,7 +9,11 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class NavbarComponent {
   searchForm : FormGroup;
-  constructor(fb: FormBuilder){
+  constructor(fb: FormBuilder, private router: Router, private auth: AuthService){
     this.searchForm  = fb.group({})
+  }
+  logout() {
+    this.auth.logOut()
+    this.router.navigate(['']);
   }
 }

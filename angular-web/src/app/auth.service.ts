@@ -14,12 +14,18 @@ export class AuthService {
   constructor(public http: Http) { }
 
   loggedIn() {
+    console.log("Checking token")
     return tokenNotExpired();
   }
 
   stashJWT(response: string) {
     localStorage.setItem("token", response)
   }
+
+  logOut() {
+    localStorage.removeItem("token")
+  }
+  
   makeLoginAttempt(credentials: any): Promise<any> {
     return this.http.post(
       this.loginUrl,

@@ -9,6 +9,7 @@ import { HttpModule } from '@angular/http';
 import { PersonComponent } from './person.component';
 import { NavbarComponent } from './navbar.component';
 import { LoginComponent } from './login.component';
+import { HomeComponent } from './home.component';
 import { PersonService } from './person.service';
 import { AuthModule } from './auth.module';
 import { AuthService } from './auth.service';
@@ -22,7 +23,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AppComponent,
     NavbarComponent,
     PersonComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
