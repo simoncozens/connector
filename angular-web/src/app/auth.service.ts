@@ -14,7 +14,6 @@ export class AuthService {
   constructor(public http: Http) { }
 
   loggedIn() {
-    console.log("Checking token")
     return tokenNotExpired();
   }
 

@@ -9,6 +9,7 @@ import { Person } from './person';
 export class PersonService {
   // Define the routes we are going to interact with
   private peopleListUrl = 'http://127.0.0.1:3000/people.json';
+  private personShowUrl = 'http://127.0.0.1:3000/people/';
 
   constructor(public authHttp: AuthHttp) { }
 
@@ -23,6 +24,15 @@ export class PersonService {
       .then(response=>response.json() as Person[])
       .catch(this.handleError);
   }
+
+  getPerson(id: string) {
+    return this.authHttp
+      .get(this.personShowUrl+id)
+      .toPromise()
+      .then(response=>response.json() as Person)
+      .catch(this.handleError);
+  }
+
 
   // Implement a method to handle errors if any
   private handleError(error: any): Promise<any> {
