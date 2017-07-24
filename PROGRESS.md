@@ -1,8 +1,6 @@
 # Phase 1 Spike
 
-- [ ] Authentication:
-  - [ ] Grab JWT from response and stash
-  - [ ] Error report on failure
+- [x] Authentication
 - [ ] Apply for account
 - [ ] Edit profile
 - [ ] Save favourites
