@@ -13,6 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginComponent {
   @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
   loginForm : FormGroup;
+  loginFail : boolean;
   constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, fb: FormBuilder){
     this.loginForm = fb.group({
       'email': "",
@@ -21,7 +22,7 @@ export class LoginComponent {
     if (this.auth.loggedIn()) { this.gotoNext() }
   }
   submitForm(credentials: any){
-    console.log(credentials)
+    this.loginFail = false;
     return this.auth.makeLoginAttempt(credentials)
       .then(s => this.handleLoginSuccess(s))
       .catch(e => this.handleLoginError(e));
@@ -42,9 +43,8 @@ export class LoginComponent {
     this.router.navigate([next])
   }
 
-  private handleLoginError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
+  private handleLoginError(error: any) {
+    this.loginFail = true;
   }
 
 }

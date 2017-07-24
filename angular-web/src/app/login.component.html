@@ -12,6 +12,9 @@
           <div class="form-group">
           <input type="password" [formControl]="loginForm.controls['password']"  placeholder="Password" class="form-control" required>
           </div>
+          <p class="text-danger" *ngIf="loginFail">
+            Username and password were not correct.
+          </p>
           <div class="form-group">
           <input type="submit" name="login" class="login loginmodal-submit" value="Login">
           </div>
