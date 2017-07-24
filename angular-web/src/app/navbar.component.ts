@@ -10,7 +10,12 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   searchForm : FormGroup;
   constructor(fb: FormBuilder, private router: Router, private auth: AuthService){
-    this.searchForm  = fb.group({})
+    this.searchForm  = fb.group({
+      'fts': ""
+      })
+  }
+  doSearch(query: any){
+    this.router.navigate(['/people', query])
   }
   logout() {
     this.auth.logOut()
