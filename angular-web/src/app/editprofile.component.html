@@ -23,10 +23,10 @@
 
       <div formArrayName="affiliations">
         <!--affiliations-->
-          <div *ngFor="let address of profileForm.controls.affiliations.controls; let i=index">
+          <div *ngFor="let address of getAffiliations(profileForm); let i=index">
             <div class="col-xs-2">
               <span>Affiliation {{i + 1}}</span>
-              <span class="glyphicon glyphicon-remove pull-right" *ngIf="profileForm.controls.affiliations.controls.length > 1" (click)="removeAffiliation(i)"></span>
+              <span class="glyphicon glyphicon-remove pull-right" *ngIf="getAffiliations(profileForm).length > 1" (click)="removeAffiliation(i)"></span>
             </div>
             <div class="col-xs-9" [formGroupName]="i">
             <div class="panel panel-default">
@@ -34,7 +34,7 @@
               <div class="form-group">
                 <label>Organisation</label>
                 <input type="text" class="form-control" formControlName="organisation">
-                <small [hidden]="profileForm.controls.affiliations.controls[i].controls.organisation.valid" class="text-danger">
+                <small [hidden]="getAffiliations(profileForm)[i].get('organisation').valid" class="text-danger">
                     Organisation is required
                 </small>
               </div>

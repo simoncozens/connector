@@ -37,4 +37,11 @@ export class EditProfileComponent {
         website: [a.website]
     });
   }
+
+  getAffiliations(profileForm) :FormArray {
+    return profileForm.get('affiliations').controls
+  }
+
+  save(form) {
+  }
 }

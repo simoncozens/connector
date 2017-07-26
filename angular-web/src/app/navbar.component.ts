@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
   searchForm : FormGroup;
-  constructor(fb: FormBuilder, private router: Router, private auth: AuthService){
+  constructor(fb: FormBuilder, private router: Router, public auth: AuthService){
     this.searchForm  = fb.group({
       'fts': ""
       })
