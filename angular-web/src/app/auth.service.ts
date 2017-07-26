@@ -3,10 +3,11 @@ import { tokenNotExpired } from 'angular2-jwt';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Person } from './person';
+import { AppSettings } from './app.settings';
 
 @Injectable()
 export class AuthService {
-  private loginUrl = 'http://127.0.0.1:3000/login';
+  private loginUrl = AppSettings.API_ENDPOINT+'/login';
 
   headers = new Headers({
     'Content-Type': 'application/json'
