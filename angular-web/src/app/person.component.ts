@@ -19,17 +19,17 @@ export class PersonComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.personService.getPerson(params.get('id'))
         .then((person: Person) => this.person = person)
-        .catch((error) => console.log(error))
-    })
+        .catch((error) => console.log(error));
+    });
   }
 
   follow(): void {
-    this.person.followed = true
-    this.personService.follow(this.person.id)
+    this.person.followed = true;
+    this.personService.follow(this.person.id);
   }
   unfollow(): void {
-    this.person.followed = false
-    this.personService.unfollow(this.person.id)
+    this.person.followed = false;
+    this.personService.unfollow(this.person.id);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormsModule, FormGroup, FormBuilder, FormArray, Validators }   from '@angular/forms';
+import { FormsModule, FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Person, Affiliation } from './person';
 import { Response } from '@angular/http';
@@ -11,23 +11,23 @@ import { Router, ActivatedRoute } from '@angular/router';
   selector: 'login',
   templateUrl: './editprofile.component.html'
 })
-export class EditProfileComponent {
+export class EditProfileComponent implements OnInit {
     public profileForm: FormGroup;
 
-  @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
-  person : Person;
-  constructor(private _fb: FormBuilder, private auth: AuthService, private router: Router, private route: ActivatedRoute){
-    this.person = this.auth.loggedInUser()
+  @ViewChild('autoShownModal') public autoShownModal: ModalDirective;
+  person: Person;
+  constructor(private _fb: FormBuilder, private auth: AuthService, private router: Router, private route: ActivatedRoute) {
+    this.person = this.auth.loggedInUser();
   }
   ngOnInit() {
-    let controls = {
+    const controls = {
           intro_bio: this.person.intro_bio,
           preferred_contact: this.person.preferred_contact,
           affiliations: this._fb.array(
             this.person.affiliations.map(a => this.initAffiliation(a))
           )
-    }
-    this.profileForm = this._fb.group(controls)
+    };
+    this.profileForm = this._fb.group(controls);
   }
 
   initAffiliation(a: Affiliation = <Affiliation>{}) {
@@ -38,8 +38,8 @@ export class EditProfileComponent {
     });
   }
 
-  getAffiliations(profileForm) :FormArray {
-    return profileForm.get('affiliations').controls
+  getAffiliations(profileForm): FormArray {
+    return profileForm.get('affiliations').controls;
   }
 
   save(form) {

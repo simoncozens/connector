@@ -11,17 +11,17 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
-  @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
-  loginForm : FormGroup;
-  loginFail : boolean;
-  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, fb: FormBuilder){
+  @ViewChild('autoShownModal') public autoShownModal: ModalDirective;
+  loginForm: FormGroup;
+  loginFail: boolean;
+  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, fb: FormBuilder) {
     this.loginForm = fb.group({
-      'email': "",
-      'password': ""
-    })
-    if (this.auth.loggedIn()) { this.gotoNext() }
+      'email': '',
+      'password': ''
+    });
+    if (this.auth.loggedIn()) { this.gotoNext(); }
   }
-  submitForm(credentials: any){
+  submitForm(credentials: any) {
     this.loginFail = false;
     return this.auth.makeLoginAttempt(credentials)
       .then(s => this.handleLoginSuccess(s))
@@ -29,19 +29,19 @@ export class LoginComponent {
   }
 
   private handleLoginSuccess(response: Response) {
-    let parsed = response.json()
-    this.auth.stashJWT(parsed["token"])
-    this.auth.setLoggedInUser(parsed)
-    this.gotoNext()
+    const parsed = response.json();
+    this.auth.stashJWT(parsed['token']);
+    this.auth.setLoggedInUser(parsed);
+    this.gotoNext();
   }
 
   private gotoNext() {
     if (this.autoShownModal) {
-      this.autoShownModal.hide()
+      this.autoShownModal.hide();
     }
-    console.log(this.route.snapshot.queryParams["continue"])
-    let next = this.route.snapshot.queryParams['continue'] || ""
-    this.router.navigate([next])
+    console.log(this.route.snapshot.queryParams['continue']);
+    const next = this.route.snapshot.queryParams['continue'] || '';
+    this.router.navigate([next]);
   }
 
   private handleLoginError(error: any) {

@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'edit', component: EditProfileComponent, },
   {
     path: '',
-    redirectTo: "/home",
+    redirectTo: '/home',
     pathMatch: 'full'
   }
 ];

@@ -8,17 +8,17 @@ import { Router } from '@angular/router';
   templateUrl: './navbar.component.html'
 })
 export class NavbarComponent {
-  searchForm : FormGroup;
-  constructor(fb: FormBuilder, private router: Router, public auth: AuthService){
+  searchForm: FormGroup;
+  constructor(fb: FormBuilder, private router: Router, public auth: AuthService) {
     this.searchForm  = fb.group({
-      'fts': ""
-      })
+      'fts': ''
+      });
   }
-  doSearch(query: any){
-    this.router.navigate(['/people', query])
+  doSearch(query: any) {
+    this.router.navigate(['/people', query]);
   }
   logout() {
-    this.auth.logOut()
+    this.auth.logOut();
     this.router.navigate(['']);
   }
 }

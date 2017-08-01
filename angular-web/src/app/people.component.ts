@@ -12,21 +12,21 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class PeopleComponent implements OnInit {
   result: PagedResults<Person>;
-  _page: number = 1;
+  _page = 1;
   constructor(public personService: PersonService, private route: ActivatedRoute) {
   }
   getPeople() {
     this.route.params.subscribe(params => {
       this.personService.getPeople(this._page, params)
         .then(result => this.result = result);
-    })
+    });
   }
-  ngOnInit(): void { this.getPeople() }
+  ngOnInit(): void { this.getPeople(); }
   @Input() set page(value: number) {
-    this._page = value
-    this.getPeople()
+    this._page = value;
+    this.getPeople();
   }
-  get page() { return this._page }
+  get page() { return this._page; }
 }
 
 @Component({

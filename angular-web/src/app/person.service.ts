@@ -9,49 +9,49 @@ import { Person } from './person';
 @Injectable()
 export class PersonService {
   // Define the routes we are going to interact with
-  private peopleListUrl = AppSettings.API_ENDPOINT+'/people.json';
-  private personUrl = AppSettings.API_ENDPOINT+'/people/';
-  private followUrl = AppSettings.API_ENDPOINT+'/people/following';
+  private peopleListUrl = AppSettings.API_ENDPOINT + '/people.json';
+  private personUrl = AppSettings.API_ENDPOINT + '/people/';
+  private followUrl = AppSettings.API_ENDPOINT + '/people/following';
 
   constructor(public authHttp: AuthHttp) { }
 
   getPeople(page: number = 1, params = {}, url = this.peopleListUrl) {
-    var myParams:any = Object.assign({"page": page},params);
+    const myParams: any = Object.assign({'page': page}, params);
     return this.authHttp
       .get(url,
-        {method: "GET",
+        {method: 'GET',
         params: myParams
         }
       )
       .toPromise()
-      .then(response=>response.json() as Person[])
+      .then(response => response.json() as Person[])
       .catch(this.handleError);
   }
 
   getFollows(page: number = 1) {
-    return this.getPeople(page, {}, this.followUrl)
+    return this.getPeople(page, {}, this.followUrl);
   }
 
   getPerson(id: string) {
     return this.authHttp
-      .get(this.personUrl+id)
+      .get(this.personUrl + id)
       .toPromise()
-      .then(response=>response.json() as Person)
+      .then(response => response.json() as Person)
       .catch(this.handleError);
   }
 
   follow(id: string) {
-    return this.authHttp.get(this.personUrl+id+"/follow")
+    return this.authHttp.get(this.personUrl + id + '/follow')
       .toPromise()
-      .then(response=>response.json() as Person)
+      .then(response => response.json() as Person)
       .catch(this.handleError);
 
   }
 
   unfollow(id: string) {
-    return this.authHttp.get(this.personUrl+id+"/unfollow")
+    return this.authHttp.get(this.personUrl + id + '/unfollow')
       .toPromise()
-      .then(response=>response.json() as Person)
+      .then(response => response.json() as Person)
       .catch(this.handleError);
 
   }
