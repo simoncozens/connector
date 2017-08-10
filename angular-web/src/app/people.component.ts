@@ -3,6 +3,7 @@ import { Person } from './person';
 import { PersonService } from './person.service';
 import { PagedResults } from './pagedresults';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @Component({
   selector: 'people',
@@ -18,7 +19,7 @@ export class PeopleComponent implements OnInit {
   getPeople() {
     this.route.params.subscribe(params => {
       this.personService.getPeople(this._page, params)
-        .then(result => this.result = result);
+        .then(result => this.addMorePeople(result));
     });
   }
   ngOnInit(): void { this.getPeople(); }
@@ -27,6 +28,18 @@ export class PeopleComponent implements OnInit {
     this.getPeople();
   }
   get page() { return this._page; }
+
+  addMorePeople(result: PagedResults<Person>) {
+    if (!this.result) {
+      this.result = result
+    }
+    this._page = result.current_page;
+    this.result.entries.push.apply(this.result.entries,result.entries)
+  }
+
+  onScroll () {
+    this.page = this.page + 1;
+  }
 }
 
 @Component({

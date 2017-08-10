@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ModalModule, BsDropdownModule } from 'ngx-bootstrap';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +36,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    InfiniteScrollModule,
     HttpModule,
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),

@@ -1,6 +1,10 @@
-<pagination-controls (pageChange)="page = $event"></pagination-controls>
+<div class="personcontainer"
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="300"
+        (scrolled)="onScroll()">
 <div *ngIf="result">
-<div class="person row" *ngFor="let person of result?.entries | paginate: { itemsPerPage: 10, currentPage: page, totalItems: result.total_entries }">
+<div class="person row" *ngFor="let person of result?.entries">
   <div class="col-xs-2"><img src="http://via.placeholder.com/150x150"/></div>
   <div class="col-xs-9">
     <h3><a [routerLink]="['/person',person.id]">{{person.name}}</a></h3>
@@ -13,4 +17,4 @@
   </div>
 </div>
 </div>
-<pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
