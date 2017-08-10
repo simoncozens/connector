@@ -1,10 +1,6 @@
-<div class="modal fade" [config]="{ show: true, keyboard: false, backdrop: 'static'}" bsModal #autoShownModal="bs-modal" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">Log In To Your Account</h4>
-      </div>
-      <div class="modal-body">
+<h1>The Connector </h1>
+    <h1 i18n="@@loginHeader">Log In To Your Account</h1>
+      <div>
           <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
           <div class="form-group">
           <input type="text" [formControl]="loginForm.controls['email']" placeholder="Email" class="form-control" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
@@ -20,6 +16,11 @@
           </div>
           </form>
       </div>
-    </div>
-  </div>
+<div>
+<span i18n="@@languageSelect">Select language</span>: <select name="selectLocale" (change)="changeLocale($event.target.value)">
+<option value="en">English</option>
+<option value="es">Español</option>
+<option value="po">Português</option>
+<option value="fr">Français</option>
+</select>
 </div>

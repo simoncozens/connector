@@ -28,7 +28,9 @@ const routes: Routes = [
     component: FollowsComponent,
     canActivate: [AuthGuard]
   },
-  { path: 'home', component: HomeComponent, },
+  { path: 'home', component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
   { path: 'edit', component: EditProfileComponent, },
   {
     path: '',

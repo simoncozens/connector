@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,7 +10,6 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
-  @ViewChild('autoShownModal') public autoShownModal: ModalDirective;
   loginForm: FormGroup;
   loginFail: boolean;
   constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, fb: FormBuilder) {
@@ -36,9 +34,6 @@ export class LoginComponent {
   }
 
   private gotoNext() {
-    if (this.autoShownModal) {
-      this.autoShownModal.hide();
-    }
     console.log(this.route.snapshot.queryParams['continue']);
     const next = this.route.snapshot.queryParams['continue'] || '';
     this.router.navigate([next]);
