@@ -8,4 +8,9 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+import { getTranslationProviders } from './app/i18n-providers';
+
+getTranslationProviders().then(providers => {
+  const options = { providers };
+  platformBrowserDynamic().bootstrapModule(AppModule, options);
+});
