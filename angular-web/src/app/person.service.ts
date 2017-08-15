@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { AppSettings } from './app.settings';
+import { PagedResults } from './pagedresults';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -24,7 +25,7 @@ export class PersonService {
         }
       )
       .toPromise()
-      .then(response => response.json() as Person[])
+      .then(response => response.json() as PagedResults<Person>)
       .catch(this.handleError);
   }
 

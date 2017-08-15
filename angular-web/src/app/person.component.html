@@ -1,5 +1,5 @@
 <div class="person row" *ngIf="person">
-  <div class="col-xs-2"><img src="http://via.placeholder.com/150x150"/></div>
+  <div class="col-xs-2"><img [src]="sanitize(person.picture)"/></div>
   <div class="col-xs-9">
     <h3>{{person?.name}}</h3>
     <a *ngIf="person.email" href="mailto:{{person?.email}}" class="btn-lg">

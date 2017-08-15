@@ -4,6 +4,7 @@ import { PersonService } from './person.service';
 import { PagedResults } from './pagedresults';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'people',
@@ -14,15 +15,24 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 export class PeopleComponent implements OnInit {
   result: PagedResults<Person>;
   _page = 1;
-  constructor(public personService: PersonService, private route: ActivatedRoute) {
+  params = {};
+  constructor(public personService: PersonService,
+    private sanitizer:DomSanitizer,
+    private route: ActivatedRoute) {
   }
   getPeople() {
-    this.route.params.subscribe(params => {
-      this.personService.getPeople(this._page, params)
+    this.personService.getPeople(this._page, this.params)
         .then(result => this.addMorePeople(result));
-    });
   }
-  ngOnInit(): void { this.getPeople(); }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.result = null
+      this.params = params
+      this.page = 1
+    })
+  }
+
   @Input() set page(value: number) {
     this._page = value;
     this.getPeople();
@@ -32,14 +42,17 @@ export class PeopleComponent implements OnInit {
   addMorePeople(result: PagedResults<Person>) {
     if (!this.result) {
       this.result = result
+    } else {
+      this.result.entries.push.apply(this.result.entries,result.entries)
     }
-    this._page = result.current_page;
-    this.result.entries.push.apply(this.result.entries,result.entries)
   }
 
   onScroll () {
     this.page = this.page + 1;
   }
+
+  sanitize(url:string){return this.sanitizer.bypassSecurityTrustUrl(url); }
+
 }
 
 @Component({

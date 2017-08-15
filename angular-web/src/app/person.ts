@@ -4,6 +4,7 @@ export class Affiliation {
   website: string;
 }
 
+
 export class Person {
   id: any;
   name: string;

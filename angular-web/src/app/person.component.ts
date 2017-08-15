@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Person } from './person';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { PersonService } from './person.service';
+import {DomSanitizer} from '@angular/platform-browser';
+
 import 'rxjs/Rx';
 
 @Component({
@@ -13,6 +15,7 @@ import 'rxjs/Rx';
 export class PersonComponent implements OnInit {
   person: Person;
   constructor(private personService: PersonService,
+        private sanitizer:DomSanitizer,
         private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
@@ -22,6 +25,8 @@ export class PersonComponent implements OnInit {
         .catch((error) => console.log(error));
     });
   }
+
+  sanitize(url:string){return this.sanitizer.bypassSecurityTrustUrl(url); }
 
   follow(): void {
     this.person.followed = true;

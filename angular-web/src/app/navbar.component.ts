@@ -15,7 +15,8 @@ export class NavbarComponent {
       });
   }
   doSearch(query: any) {
-    this.router.navigate(['/people', query]);
+    if (query.fts.length > 2 || query.fts.length == 0)
+      this.router.navigate(['people', query]);
   }
   logout() {
     this.auth.logOut();

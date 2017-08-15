@@ -11,7 +11,9 @@ class Person
   field :affiliations, type: Array
   field :experience, type: Array
   field :regions, type: Array
-
+  field :gender
+  field :picture
+  field :country
   has_many :follows, :dependent => :destroy
 
   def self.searchable_fields
@@ -32,7 +34,7 @@ class Person
 
   def self.search_from_params(params)
     clause = params.slice(*searchable_fields)
-    if params["fts"]
+    if !params["fts"].empty?
       clause[:$text] = { :$search => params["fts"] }
     end
     self.where(clause)
