@@ -13,6 +13,7 @@ export class PersonService {
   private peopleListUrl = AppSettings.API_ENDPOINT + '/people.json';
   private personUrl = AppSettings.API_ENDPOINT + '/people/';
   private followUrl = AppSettings.API_ENDPOINT + '/people/following';
+  private recentUrl = AppSettings.API_ENDPOINT + '/people/recent';
 
   constructor(public authHttp: AuthHttp) { }
 
@@ -31,6 +32,9 @@ export class PersonService {
 
   getFollows(page: number = 1) {
     return this.getPeople(page, {}, this.followUrl);
+  }
+  getRecent(page: number = 1) {
+    return this.getPeople(page, {}, this.recentUrl);
   }
 
   getPerson(id: string) {

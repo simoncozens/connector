@@ -15,6 +15,7 @@ class Person
   field :picture
   field :country
   has_many :follows, :dependent => :destroy
+  field :last_visited, type: Array # Do this as array of IDs for simplicity
 
   def self.searchable_fields
     fields.map{|x|x[0]} - ["crypted_password","salt"]
@@ -32,9 +33,17 @@ class Person
     follows.where(followed_user_id: user.id).exists?
   end
 
+  def visit(user)
+    l = self.last_visited || []
+    l.unshift(user.id).uniq!
+    l.slice!(6)
+    self.last_visited = l
+    save!
+  end
+
   def self.search_from_params(params)
     clause = params.slice(*searchable_fields)
-    if !params["fts"].empty?
+    if params["fts"] and !params["fts"].empty?
       clause[:$text] = { :$search => params["fts"] }
     end
     self.where(clause)

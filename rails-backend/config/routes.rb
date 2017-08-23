@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       end
       collection do
         get 'following'
+        get 'recent'
       end
     end
     match '/login', to: "auth#login", via: [:post]

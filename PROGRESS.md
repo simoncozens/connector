@@ -2,8 +2,13 @@
 
 - [x] Authentication
 - [ ] Apply for account
+- [ ] Forgotten password
 - [ ] Edit profile
-- [x] Save favourites
+- [x] Starred profiles
+- [ ] Notifications
+- [x] Recently visited
+- [ ] Messages
+- [ ] Recommended connections
 - [ ] Annotations
 - [ ] Security and visibility level
 - [ ] Offline mode

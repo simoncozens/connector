@@ -6,21 +6,13 @@ class PeopleController < ApplicationController
   def index
     page = params[:page] || 1
     @people = Person.search_from_params(params).page(page)
-    respond_to do |format|
-      format.html
-      format.json {
-        render :json => {
-          :current_page => @people.current_page,
-          :total_entries => @people.total_count,
-          :entries => @people
-        }
-      }
-    end
+    render_people
   end
 
   # GET /people/1
   # GET /people/1.json
   def show
+    current_user.visit(@person)
     followed = current_user.following?(@person)
     render :json => @person.as_json.merge({
       "followed": followed
@@ -40,13 +32,15 @@ class PeopleController < ApplicationController
     current_user.unfollow!(@person)
     render :json => { :ok => 1 }
   end
+
   def following
     @people = current_user.follows.page(params[:page]||1)
-    render :json => {
-      :current_page => @people.current_page,
-      :total_entries => @people.total_count,
-      :entries => @people.map(&:followed_user)
-    }
+    render_people &:followed_user
+  end
+
+  def recent
+    @people = Kaminari.paginate_array(Person.find(current_user.last_visited)).page(params[:page]||1)
+    render_people
   end
 
   # GET /people/new
@@ -107,5 +101,13 @@ class PeopleController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
       params.fetch(:person, {})
+    end
+
+    def render_people # Like they do in Fight Club
+      render :json => {
+        :current_page => @people.current_page,
+        :total_entries => @people.total_count,
+        :entries => block_given? ? @people.map{|x| yield(x)} : @people
+      }
     end
 end

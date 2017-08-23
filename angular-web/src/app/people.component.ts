@@ -66,3 +66,15 @@ export class FollowsComponent extends PeopleComponent {
       .then(result => this.result = result);
   }
 }
+
+@Component({
+  selector : 'recent',
+  templateUrl: './people.component.html',
+  styleUrls: ['./people.component.sass']
+})
+export class RecentComponent extends PeopleComponent {
+  getPeople() {
+    this.personService.getRecent(this._page)
+      .then(result => this.result = result);
+  }
+}

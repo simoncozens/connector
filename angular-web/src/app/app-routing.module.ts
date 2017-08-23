@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PeopleComponent, FollowsComponent } from './people.component';
+import { PeopleComponent, FollowsComponent, RecentComponent } from './people.component';
 import { PersonComponent } from './person.component';
 import { EditProfileComponent } from './editprofile.component';
 import { LoginComponent } from './login.component';
@@ -26,6 +26,11 @@ const routes: Routes = [
   {
     path: 'following',
     component: FollowsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'recent',
+    component: RecentComponent,
     canActivate: [AuthGuard]
   },
   { path: 'home', component: HomeComponent,
