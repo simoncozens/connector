@@ -17,10 +17,6 @@ class Person
   has_many :follows, :dependent => :destroy
   field :last_visited, type: Array # Do this as array of IDs for simplicity
 
-  def self.permissible_params
-    fields.map{|x|x[0]} - ["crypted_password","salt"]
-  end
-  
   def self.searchable_fields
     fields.map{|x|x[0]} - ["crypted_password","salt"]
   end

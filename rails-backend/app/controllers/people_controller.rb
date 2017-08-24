@@ -42,8 +42,8 @@ class PeopleController < ApplicationController
   end
 
   def update
-    puts person_params
-    if current_user.update(person_params)
+    puts person_params_user
+    if current_user.update(person_params_user)
       render :json => { :ok => 1 }
     else
       render json: @person.errors, status: :unprocessable_entity
@@ -56,9 +56,17 @@ class PeopleController < ApplicationController
       @person = Person.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def person_params
-      params.fetch(:person, {}).permit(Person.permissible_params)
+    # What can a user edit about themselves?
+    def person_params_user
+      params.fetch(:person, {}).permit(
+        :intro_bio,
+        :preferred_contact,
+        :picture,
+        :country,
+        :affiliations => [[:organisation, :position, :website]],
+        :experience => [],
+        :regions => []
+      )
     end
 
     def render_people # Like they do in Fight Club
