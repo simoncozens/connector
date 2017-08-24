@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormsModule, FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
+import { PersonService } from './person.service';
 import { Person, Affiliation } from './person';
 import { Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
@@ -16,7 +17,7 @@ export class EditProfileComponent implements OnInit {
 
   @ViewChild('autoShownModal') public autoShownModal: ModalDirective;
   person: Person;
-  constructor(private _fb: FormBuilder, private auth: AuthService, private router: Router, private route: ActivatedRoute) {
+  constructor(public personService: PersonService, private _fb: FormBuilder, private auth: AuthService, private router: Router, private route: ActivatedRoute) {
     this.person = this.auth.loggedInUser();
   }
   ngOnInit() {
@@ -43,5 +44,9 @@ export class EditProfileComponent implements OnInit {
   }
 
   save(form) {
+    let value = form.getRawValue()
+    this.personService.saveProfile(value)
+    this.person = Object.assign(this.person, value)
+    this.auth.setLoggedInUser(this.person)
   }
 }

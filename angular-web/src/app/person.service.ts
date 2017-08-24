@@ -58,7 +58,14 @@ export class PersonService {
       .toPromise()
       .then(response => response.json() as Person)
       .catch(this.handleError);
+  }
 
+  saveProfile(profileData) {
+    return this.authHttp
+      .put(this.personUrl, profileData)
+      .toPromise()
+      .then(response => response.json() as Person)
+      .catch(this.handleError);
   }
 
   // Implement a method to handle errors if any
