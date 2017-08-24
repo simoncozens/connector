@@ -60,12 +60,10 @@ export class PersonService {
       .catch(this.handleError);
   }
 
-  saveProfile(profileData) {
+  saveProfile(profileData):Promise<any> {
     return this.authHttp
       .put(this.personUrl, profileData)
       .toPromise()
-      .then(response => response.json() as Person)
-      .catch(this.handleError);
   }
 
   // Implement a method to handle errors if any
