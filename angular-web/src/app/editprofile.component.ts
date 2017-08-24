@@ -16,7 +16,7 @@ export class EditProfileComponent implements OnInit {
     public profileForm: FormGroup;
 
   @ViewChild('autoShownModal') public autoShownModal: ModalDirective;
-  person: Person;
+  person: Person;  public alerts: any = [];
   constructor(public personService: PersonService, private _fb: FormBuilder, private auth: AuthService, private router: Router, private route: ActivatedRoute) {
     this.person = this.auth.loggedInUser();
   }
@@ -45,8 +45,16 @@ export class EditProfileComponent implements OnInit {
 
   save(form) {
     let value = form.getRawValue()
-    this.personService.saveProfile(value)
-    this.person = Object.assign(this.person, value)
-    this.auth.setLoggedInUser(this.person)
+    this.personService.saveProfile(value).then(
+      response => {
+        this.person = Object.assign(this.person, value);
+        this.auth.setLoggedInUser(this.person);
+        this.alerts = [ {type: 'success', msg: `Saved successfully.` }, ]
+      }
+    ).catch(() => {
+        this.alerts = [ {type: 'danger', msg: `Something went wrong.` }, ]
+    }
+
+    )
   }
 }
