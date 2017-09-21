@@ -3,13 +3,13 @@
 - [x] Authentication
 - [ ] Apply for account
 - [ ] Forgotten password
-- [ ] Edit profile
+- [x] Edit profile
 - [x] Starred profiles
 - [ ] Notifications
 - [x] Recently visited
-- [ ] Messages
 - [ ] Recommended connections
-- [ ] Annotations
+- [ ] Messages <- Do this next
+- [ ] Annotations <- Then this
 - [ ] Security and visibility level
 - [ ] Offline mode
 - [ ] CVS/vCard export

@@ -15,6 +15,7 @@ import 'rxjs/Rx';
 export class PersonComponent implements OnInit {
   person: Person;
   constructor(private personService: PersonService,
+        private router: Router,
         private sanitizer:DomSanitizer,
         private route: ActivatedRoute
   ) {}
@@ -36,5 +37,7 @@ export class PersonComponent implements OnInit {
     this.person.followed = false;
     this.personService.unfollow(this.person.id);
   }
-
+  sendMessage(): void {
+    this.router.navigate(['messages', {'sendTo': this.person.id }])
+  }
 }
