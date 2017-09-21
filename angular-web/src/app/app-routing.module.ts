@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PeopleComponent, FollowsComponent, RecentComponent } from './people.component';
-import { PersonComponent } from './person.component';
-import { EditProfileComponent } from './editprofile.component';
-import { LoginComponent } from './login.component';
-import { HomeComponent } from './home.component';
+import { PeopleComponent, FollowsComponent, RecentComponent } from './pages/people/people.component';
+import { PersonComponent } from './pages/person/person.component';
+import { EditProfileComponent } from './pages/editprofile/editprofile.component';
+import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from './pages/home/home.component';
 
-import { AuthGuard } from './auth-guard.service';
+import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
   {

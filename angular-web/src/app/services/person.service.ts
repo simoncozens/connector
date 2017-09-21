@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
-import { AppSettings } from './app.settings';
-import { PagedResults } from './pagedresults';
+import { AppSettings } from '../app.settings';
+import { PagedResults } from '../classes/pagedresults';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Person } from './person';
+import { Person } from '../classes/person';
 
 @Injectable()
 export class PersonService {

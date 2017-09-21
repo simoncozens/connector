@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Person } from './person';
-import { PersonService } from './person.service';
-import { PagedResults } from './pagedresults';
+import { Person } from '../../classes/person';
+import { PersonService } from '../../services/person.service';
+import { PagedResults } from '../../classes/pagedresults';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import {DomSanitizer} from '@angular/platform-browser';

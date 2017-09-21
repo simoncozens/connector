@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Person } from './person';
+import { Person } from '../../classes/person';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { PersonService } from './person.service';
+import { PersonService } from '../../services/person.service';
 import {DomSanitizer} from '@angular/platform-browser';
 
 import 'rxjs/Rx';
@@ -9,7 +9,7 @@ import 'rxjs/Rx';
 @Component({
   selector: 'person',
   templateUrl: './person.component.html',
-    styleUrls: ['./people.component.sass']
+    styleUrls: ['../people/people.component.sass']
 
 })
 export class PersonComponent implements OnInit {

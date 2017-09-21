@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Person } from './person';
-import { AppSettings } from './app.settings';
+import { Person } from '../classes/person';
+import { AppSettings } from '../app.settings';
 
 @Injectable()
 export class AuthService {

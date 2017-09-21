@@ -1,8 +1,8 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormsModule, FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { AuthService } from './auth.service';
-import { PersonService } from './person.service';
-import { Person, Affiliation } from './person';
+import { AuthService } from '../../services/auth.service';
+import { PersonService } from '../../services/person.service';
+import { Person, Affiliation } from '../../classes/person';
 import { Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { ModalDirective } from 'ngx-bootstrap/modal';
