@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Profiles</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="result">
+    <button ion-item *ngFor="let person of result?.entries">
+        <img width="80" height="80" item-left [src]="sanitize(person.picture)"/>
+        <ion-icon name="star" item-right *ngIf="person.followed"></ion-icon>
+        <ion-icon name="star-outline" item-right *ngIf="!person.followed"></ion-icon>
+        <div class="person-name">{{person.name}}</div>
+        <br/>
+        {{person.country}}
+    </button>
+  </ion-list>
+
+   <ion-infinite-scroll (ionInfinite)="onScroll($event)">
+   <ion-infinite-scroll-content></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+
+</ion-content>
