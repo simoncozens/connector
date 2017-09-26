@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PeopleComponent, FollowsComponent, RecentComponent } from './pages/people/people.component';
 import { PersonComponent } from './pages/person/person.component';
+import { InboxComponent } from './pages/inbox/inbox.component';
 import { EditProfileComponent } from './pages/editprofile/editprofile.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -31,6 +32,9 @@ const routes: Routes = [
   {
     path: 'recent',
     component: RecentComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: 'inbox', component: InboxComponent,
     canActivate: [AuthGuard]
   },
   { path: 'home', component: HomeComponent,

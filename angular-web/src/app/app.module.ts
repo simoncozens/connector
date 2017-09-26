@@ -11,10 +11,12 @@ import { PeopleComponent, FollowsComponent, RecentComponent } from './pages/peop
 import { PersonComponent } from './pages/person/person.component';
 import { NavbarComponent } from './navbar.component';
 import { LoginComponent } from './pages/login/login.component';
+import { InboxComponent } from './pages/inbox/inbox.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EditProfileComponent } from './pages/editprofile/editprofile.component';
 
 import { PersonService } from './services/person.service';
+import { MessageService } from './services/message.service';
 import { AuthModule } from './services/auth.module';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
@@ -30,7 +32,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     PersonComponent, RecentComponent,
     LoginComponent,
     HomeComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    InboxComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AuthModule,
     ReactiveFormsModule
   ],
-  providers: [ PersonService, AuthService, AuthGuard ],
+  providers: [ PersonService, AuthService, AuthGuard, MessageService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
