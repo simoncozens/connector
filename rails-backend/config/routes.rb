@@ -10,6 +10,11 @@ Rails.application.routes.draw do
         get 'recent'
       end
     end
+    resources :messages, :only => [:index, :show] do
+      collection do
+        get 'with/:person', to: "messages#with"
+      end
+    end
     put 'people', to: 'people#update'
     match 'people', to: 'people#index', via: [:options]
     match '/login', to: "auth#login", via: [:post]

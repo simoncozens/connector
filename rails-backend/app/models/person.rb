@@ -1,5 +1,7 @@
 class Person
   include Mongoid::Document
+  include Mongoid::Timestamps
+
   paginates_per 10
   authenticates_with_sorcery!
 
