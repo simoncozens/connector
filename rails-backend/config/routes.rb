@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :messages, :only => [:index, :show] do
       collection do
         get 'with/:person', to: "messages#with"
+        post 'send/:person', to: "messages#create"
       end
     end
     put 'people', to: 'people#update'

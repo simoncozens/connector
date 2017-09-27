@@ -31,6 +31,7 @@ class Message
         },
         { "$project": { # Then pick out their dates and the other person involved
             created_at: 1,
+            incoming: { "$eq": ["$sender_id", id] },
             other_person: {
               "$cond": { if: { "$eq": ["$sender_id", id] },
                 then: "$recipient_id",
@@ -42,6 +43,7 @@ class Message
         { "$sort": { created_at: 1 } }, # Sort by date
         { "$group": { # Group by the other person involved
             _id: "$other_person",
+            incoming: { "$last": "$incoming" },
             most_recent: { "$last": "$_id" }
           }
         }
@@ -53,7 +55,9 @@ class Message
         pipeline << { '$limit' => default_per_page }
     end
     results = collection.aggregate(pipeline).map {|rec| {
-          user: Person.find(rec["_id"]), message: Message.find(rec["most_recent"])
+          user: Person.find(rec["_id"]),
+          message: Message.find(rec["most_recent"]),
+          incoming: rec["incoming"]
       }}
     results.instance_eval <<-EVAL
         def current_page
