@@ -5,18 +5,21 @@ import { PagedResults } from '../../classes/pagedresults';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import {DomSanitizer} from '@angular/platform-browser';
+import { Person } from '../../classes/person';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'inbox',
-  templateUrl: './inbox.component.html',
-    styleUrls: ['./inbox.component.sass']
-
+  selector: 'messages-with',
+  templateUrl: './messages-with.component.html',
+    styleUrls: ['../inbox/inbox.component.sass']
 
 })
-export class InboxComponent implements OnInit {
+export class MessagesWithComponent implements OnInit {
   result: PagedResults<Message>;
   _page = 1;
+  withId: string;
+  newMessage: string;
+  with: Person;
   params = {};
   moment;
   constructor(public messageService: MessageService,
@@ -24,17 +27,18 @@ export class InboxComponent implements OnInit {
     private route: ActivatedRoute) {
     this.moment = moment
   }
+
   getMessages() {
-    this.messageService.getInbox(this._page, this.params)
-        .then(result => this.addMoreMessages(result));
+      this.messageService.getThread(this.withId, this._page)
+        .then(result => this.addMoreMessages(result))
+        .catch((error) => console.log(error));
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.result = null
-      this.params = params
-      this.page = 1
-    })
+    this.route.paramMap.subscribe(params => {
+      this.withId = params.get('id')
+      this.getMessages()
+    });
   }
 
   @Input() set page(value: number) {
@@ -44,9 +48,11 @@ export class InboxComponent implements OnInit {
   get page() { return this._page; }
 
   addMoreMessages(result: PagedResults<Message>) {
+    this.with = (<any>result).other // Thread stashes more stuff in the response
     if (!this.result) {
       this.result = result
     } else {
+      // XXX Actually we need to put them at the start
       this.result.entries.push.apply(this.result.entries,result.entries)
     }
     console.log(this.result)
@@ -57,4 +63,20 @@ export class InboxComponent implements OnInit {
   }
   sanitize(url:string){return this.sanitizer.bypassSecurityTrustUrl(url); }
 
+  sendMessage() {
+    this.messageService.sendMessage(this.withId, this.newMessage)
+    .then(response => {
+      var r = response.json();
+      if (r.ok) {
+        // Clear the box
+        this.newMessage = ""
+        // Add message to list
+        this.result.entries.unshift(r.message)
+      }
+    })
+  }
+
+  toMe(message) {
+    return message.sender_id.$oid == this.withId
+  }
 }

@@ -11,8 +11,20 @@ import { Message } from '../classes/message';
 export class MessageService {
   // Define the routes we are going to interact with
   private inboxUrl = AppSettings.API_ENDPOINT + '/messages';
+  private sendMessageUrl = AppSettings.API_ENDPOINT + '/messages/send/';
+  private threadUrl = AppSettings.API_ENDPOINT + '/messages/with/';
 
   constructor(public authHttp: AuthHttp) { }
+
+  getThread(id: string, page: number = 1) {
+    return this.authHttp
+      .get(this.threadUrl + id,
+        {method: 'GET',
+          params: {'page': page}
+        }
+      ).toPromise().then(response => response.json() as PagedResults<Message>)
+      .catch(this.handleError);
+  }
 
   getInbox(page: number = 1, params = {}, url = this.inboxUrl) {
     const myParams: any = Object.assign({'page': page}, params);
@@ -27,6 +39,15 @@ export class MessageService {
       .catch(this.handleError);
   }
 
+  sendMessage(toUser, message): Promise<any> {
+    return this.authHttp
+      .get(this.sendMessageUrl + toUser,
+        {method: 'POST',
+        params: {message: message}
+        }
+      )
+      .toPromise()
+  }
   // Implement a method to handle errors if any
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);

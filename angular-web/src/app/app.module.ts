@@ -12,6 +12,7 @@ import { PersonComponent } from './pages/person/person.component';
 import { NavbarComponent } from './navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { InboxComponent } from './pages/inbox/inbox.component';
+import { MessagesWithComponent } from './pages/messages-with/messages-with.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EditProfileComponent } from './pages/editprofile/editprofile.component';
 
@@ -33,7 +34,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     LoginComponent,
     HomeComponent,
     EditProfileComponent,
-    InboxComponent
+    InboxComponent,
+    MessagesWithComponent
   ],
   imports: [
     BrowserModule,

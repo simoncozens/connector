@@ -43,4 +43,8 @@ export class LoginComponent {
     this.loginFail = true;
   }
 
+  changeLocale(locale: string) {
+    localStorage.setItem('localeId', locale);
+  }
+
 }

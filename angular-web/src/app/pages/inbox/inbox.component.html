@@ -1,10 +1,15 @@
 <div class="mailcontainer">
 <div *ngIf="result">
-<div class="message row" *ngFor="let message of result?.entries">
+<div class="message row" *ngFor="let thread of result?.entries">
+  <div class="col-xs-2"><img [src]="sanitize(thread.user.picture)"/></div>
   <div class="col-xs-5">
-    <h3><a [routerLink]="['/message',message.id]">{{message.user.name}}</a>
-    {{message.status}}</h3>
-    <div class="preview">{{message.message.content}}</div>
+    <h4><a [routerLink]="['/person',thread.user.id]">{{thread.user.name}}</a></h4>
+    <div class="preview">
+      <span *ngIf="thread.incoming" class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+      <a [routerLink]="['/messages/with',thread.user.id]">{{thread.message.content}}</a>
+      <span *ngIf="thread.message.status == 'Read'" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+      <div class="small text-muted text-right">{{moment(thread.message.created_at).fromNow()}}</div>
+
     <div class="strut"></div>
   </div>
 </div>

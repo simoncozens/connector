@@ -1,6 +1,6 @@
 <div class="person row" *ngIf="person">
-  <div class="col-xs-2"><img [src]="sanitize(person.picture)"/></div>
-  <div class="col-xs-9">
+  <div class="col-xs-3"><img [src]="sanitize(person.picture)"/></div>
+  <div class="col-xs-6">
     <h3>{{person?.name}}</h3>
     <a *ngIf="person.email" href="mailto:{{person?.email}}" class="btn-lg">
       <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
@@ -8,8 +8,8 @@
     <div class="strut"></div>
       <span class="role label label-info" *ngFor="let role of person?.roles">{{role}}</span>
     <div class="strut"></div>
-    <button type="button" class="btn btn-default">
-    <span class="glyphicon glyphicon-envelope" (click)="sendMessage()" aria-hidden="true"></span> Message</button>
+      <a [routerLink]="['/messages/with',person.id]" class="btn btn-primary">
+      <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Message</a>
     <span *ngIf="person.followed">
       <button type="button" (click)="unfollow()" class="btn btn-primary">Following</button>
     </span>

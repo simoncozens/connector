@@ -1,0 +1,27 @@
+<div *ngIf="with" class="row">
+  <div class="col-xs-2"><img [src]="sanitize(with.picture)"/>
+    <div class="strut"></div>
+  </div>
+  <div class="col-xs-5"><h3>{{with.name}}</h3>
+  </div>
+</div>
+
+<div *ngIf="result">
+<div class="message row" *ngFor="let message of result?.entries.reverse()">
+    <div class="clearfix"></div>
+  <div class="col-xs-5">
+    <div class="col-xs-9  well" [ngClass]="{'pull-right': !toMe(message), 'fromMe': !toMe(message)}">
+      {{message.content}}
+      <span *ngIf="message.status == 'Read'" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+      <div class="small text-muted text-right">{{moment(message.created_at).fromNow()}}</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-xs-5">
+    <textarea class="form-control well" [(ngModel)]='newMessage' (keydown.enter)="sendMessage();false" >
+    </textarea>
+  </div>
+</div>
