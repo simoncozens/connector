@@ -10,9 +10,9 @@
 <div class="message row" *ngFor="let message of result?.entries.reverse()">
     <div class="clearfix"></div>
   <div class="col-xs-5">
-    <div class="col-xs-9  well" [ngClass]="{'pull-right': !toMe(message), 'fromMe': !toMe(message)}">
+    <div class="col-xs-9  well" [ngClass]="{'pull-right': !toMe(message), 'fromMe': !toMe(message)}" (vp-in-view)="markRead(message)">
       {{message.content}}
-      <span *ngIf="message.status == 'Read'" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+      <span *ngIf="!toMe(message) &amp;&amp; message.status == 'Read'" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
       <div class="small text-muted text-right">{{moment(message.created_at).fromNow()}}</div>
     </div>
   </div>

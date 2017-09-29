@@ -2,19 +2,18 @@ import { Injectable } from '@angular/core';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { AppSettings } from '../app.settings';
 import { PagedResults } from '../classes/pagedresults';
+import { APIService } from './api.service';
 
 import 'rxjs/add/operator/toPromise';
 
 import { Message } from '../classes/message';
 
 @Injectable()
-export class MessageService {
+export class MessageService extends APIService {
   // Define the routes we are going to interact with
   private inboxUrl = AppSettings.API_ENDPOINT + '/messages';
   private sendMessageUrl = AppSettings.API_ENDPOINT + '/messages/send/';
   private threadUrl = AppSettings.API_ENDPOINT + '/messages/with/';
-
-  constructor(public authHttp: AuthHttp) { }
 
   getThread(id: string, page: number = 1) {
     return this.authHttp
@@ -48,6 +47,11 @@ export class MessageService {
       )
       .toPromise()
   }
+
+  readMessage(message): Promise<any> {
+    return this.apiCall(this.inboxUrl + '/' + message + '/read')
+  }
+
   // Implement a method to handle errors if any
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);

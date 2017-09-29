@@ -15,6 +15,9 @@ Rails.application.routes.draw do
         get 'with/:person', to: "messages#with"
         post 'send/:person', to: "messages#create"
       end
+      member do
+        get 'read', to: "messages#set_read"
+      end
     end
     put 'people', to: 'people#update'
     match 'people', to: 'people#index', via: [:options]

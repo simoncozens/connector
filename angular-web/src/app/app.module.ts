@@ -24,6 +24,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ViewportModule } from 'angular2-viewport';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     BsDropdownModule.forRoot(), AlertModule.forRoot(),
     NgxPaginationModule,
     AuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ViewportModule
   ],
   providers: [ PersonService, AuthService, AuthGuard, MessageService ],
   bootstrap: [AppComponent]

@@ -17,6 +17,10 @@ class Message
   scope :from_to, lambda {|u1, u2| where(sender: u1, recipient: u2) }
   scope :between, lambda {|u1, u2| any_of([from_to(u1,u2).selector, from_to(u2,u1).selector]) }
 
+  def involves?(user)
+    sender == user or recipient == user
+  end
+
   def self.inbox_for(user, page=nil)
     id = user.id
     # This piece of madness organises the messages that a given person

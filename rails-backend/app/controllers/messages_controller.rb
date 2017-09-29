@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show]
+  before_action :set_message, only: [:show, :set_read]
   before_action :authenticate!
 
   # GET /messages.json
@@ -26,8 +26,20 @@ class MessagesController < ApplicationController
     }
   end
 
+  def set_read
+    if !@message.involves? current_user
+      render json: {}, status: :forbidden
+    end
+    @message.status = "Read"
+    @message.save
+    render :json => @message.as_json.merge({ ok: 1 })
+  end
+
   # GET /messages/1.json
   def show
+    if !@message.involves? current_user
+      render json: {}, status: :forbidden
+    end
     render :json => @message
   end
 
@@ -45,7 +57,6 @@ class MessagesController < ApplicationController
   private
     def set_message
       @message = Message.find(params[:id])
-      # XXX Check this is a message I can read
     end
 
     def render_messages

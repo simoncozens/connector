@@ -72,11 +72,26 @@ export class MessagesWithComponent implements OnInit {
         this.newMessage = ""
         // Add message to list
         this.result.entries.unshift(r.message)
+      } else {
+        // XXX Did not send
       }
+    }).catch(response => {
+      // XXX Did not send
     })
   }
 
   toMe(message) {
     return message.sender_id.$oid == this.withId
+  }
+
+  markRead(message) {
+    if(! (this.toMe(message) && message.status == "Unread")) { return; }
+    this.messageService.readMessage(message.id).then(response => {
+      console.log(response.json())
+      message.status = response.status // Should be read. Might not be...
+    }
+    ).catch(response => {
+      // XXX Did not send
+    })
   }
 }
