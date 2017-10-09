@@ -63,7 +63,7 @@ export class PeopleComponent implements OnInit {
 export class FollowsComponent extends PeopleComponent {
   getPeople() {
     this.personService.getFollows(this._page)
-      .then(result => this.result = result);
+        .then(result => this.addMorePeople(result));
   }
 }
 
@@ -75,6 +75,6 @@ export class FollowsComponent extends PeopleComponent {
 export class RecentComponent extends PeopleComponent {
   getPeople() {
     this.personService.getRecent(this._page)
-      .then(result => this.result = result);
+        .then(result => this.addMorePeople(result));
   }
 }
