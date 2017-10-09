@@ -8,6 +8,8 @@
 </ion-header>
 
 <ion-content>
+  <ion-searchbar (ionInput)="doSearch($event)">
+  </ion-searchbar>
   <ion-list *ngIf="result">
     <button ion-item *ngFor="let person of result?.entries">
         <img width="80" height="80" item-left [src]="sanitize(person.picture)"/>

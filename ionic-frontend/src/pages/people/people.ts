@@ -5,14 +5,14 @@ import { AuthService } from '../../services/auth.service';
 import { PagedResults } from '../../classes/pagedresults';
 // import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
+import { NavController, NavParams } from 'ionic-angular';
 
 // XXX Need to get params from somewhere in Ionic
+
 
 @Component({
   selector: 'people',
   templateUrl: './people.component.html'
-    // styleUrls: ['./people.component.sass']
-
 })
 export class PeopleComponent implements OnInit {
   result: PagedResults<Person>;
@@ -20,7 +20,7 @@ export class PeopleComponent implements OnInit {
   params = {};
   constructor(public personService: PersonService,
     private sanitizer:DomSanitizer,
-    public auth: AuthService
+    public auth: AuthService, public navParams: NavParams
     ) {
   }
 
@@ -36,9 +36,17 @@ export class PeopleComponent implements OnInit {
   ngOnInit(): void {
     // this.route.params.subscribe(params => {
       this.result = null
+      this.params = this.navParams.get("params")
+      console.log(this.params)
       // this.params = params
       this.page = 1
     // })
+  }
+
+  doSearch(ev: any) {
+    // Reset items back to all of the items
+    let val = ev.target.value;
+    console.log(val)
   }
 
   @Input() set page(value: number) {
