@@ -10,6 +10,7 @@ class Message
 
   default_scope lambda { order_by(created_at: :desc) }
 
+  scope :unread, lambda { where(status: "Unread") }
   scope :from_user, lambda { |user| where(sender: user) }
   scope :to_user, lambda { |user| where(recipient: user) }
   scope :involves, lambda { |user| any_of([from_user(user).selector, to_user(user).selector]) }

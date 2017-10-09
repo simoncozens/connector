@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :messages, :only => [:index, :show] do
       collection do
         get 'with/:person', to: "messages#with"
+        get 'total_unread', to: "messages#total_unread"
         post 'send/:person', to: "messages#create"
       end
       member do

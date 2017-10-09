@@ -2,6 +2,10 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :set_read]
   before_action :authenticate!
 
+  def total_unread
+    render :json => { count: Message.to_user(current_user).unread.count }
+  end
+
   # GET /messages.json
   def index
     page = params[:page] || 1
