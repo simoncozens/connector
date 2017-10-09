@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       member do
         get 'follow'
         get 'unfollow'
+        post 'annotate'
       end
       collection do
         get 'following'

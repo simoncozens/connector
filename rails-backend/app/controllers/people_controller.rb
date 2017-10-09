@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  before_action :set_person, only: [:show, :edit, :destroy, :follow, :unfollow]
+  before_action :set_person, only: [:show, :edit, :destroy, :follow, :unfollow, :annotate]
   before_action :authenticate!
   # GET /people
   # GET /people.json
@@ -14,9 +14,18 @@ class PeopleController < ApplicationController
   def show
     current_user.visit(@person)
     followed = current_user.following?(@person)
+    annotation = Annotation.where(about: @person,created_by: current_user).first
     render :json => @person.as_json.merge({
-      "followed": followed
+      "followed": followed,
+      "annotation": annotation
     })
+  end
+
+  def annotate
+    ann = Annotation.first_or_create(about: @person,created_by: current_user)
+    ann.content = params[:content]
+    ann.save!
+    render :json => { :ok => 1 }
   end
 
   # Following

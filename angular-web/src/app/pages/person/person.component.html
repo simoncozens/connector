@@ -18,7 +18,6 @@
     </span>
 
   </div>
-</div>
 
 <div class="person row">
   <div class="col-xs-2 text-muted"> Preferred Method of Contact </div>
@@ -68,6 +67,14 @@
   <div class="row">
     <div class="col-xs-2 text-muted"> Organisation Website </div>
     <div class="col-xs-9"> {{affiliation.website}} </div>
+  </div>
+</div>
+
+  <div class="person row">
+    <div class="col-xs-2 text-muted"> My notes </div>
+    <div class="col-xs-9">
+      <textarea [(ngModel)]='annotation' (keydown.enter)="saveAnnotation();false"></textarea>
+    </div>
   </div>
 </div>
 

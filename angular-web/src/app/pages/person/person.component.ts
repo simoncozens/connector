@@ -14,6 +14,7 @@ import 'rxjs/Rx';
 })
 export class PersonComponent implements OnInit {
   person: Person;
+  annotation: string;
   constructor(private personService: PersonService,
         private router: Router,
         private sanitizer:DomSanitizer,
@@ -22,7 +23,10 @@ export class PersonComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.personService.getPerson(params.get('id'))
-        .then((person: Person) => this.person = person)
+        .then((person: Person) => {
+          this.person = person
+          this.annotation = person.annotation && person.annotation.content
+        })
         .catch((error) => console.log(error));
     });
   }
@@ -39,5 +43,9 @@ export class PersonComponent implements OnInit {
   }
   sendMessage(): void {
     this.router.navigate(['messages', {'sendTo': this.person.id }])
+  }
+
+  saveAnnotation(): void {
+    this.personService.annotate(this.person.id, this.annotation)
   }
 }

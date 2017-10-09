@@ -66,6 +66,13 @@ export class PersonService {
       .toPromise()
   }
 
+  annotate(id: string, content: string) {
+    return this.authHttp.post(this.personUrl + id + '/annotate', { content: content})
+      .toPromise()
+      .then(response => response.json() as Person)
+      .catch(this.handleError);
+  }
+
   // Implement a method to handle errors if any
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);

@@ -16,4 +16,5 @@ export class Person {
   regions: string[];
   followed: boolean;
   affiliations: Affiliation[];
+  annotation: any;
 }
