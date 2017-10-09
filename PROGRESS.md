@@ -1,31 +1,42 @@
 # Phase 1 Spike
 
-- [x] Authentication
-- [ ] Apply for account
-- [ ] Forgotten password
-- [x] Edit profile
-- [x] Starred profiles
-- [ ] Notifications
-- [x] Recently visited
-- [ ] Recommended connections
-- [ ] Messages <- Do this next
-- [ ] Annotations <- Then this
-- [ ] Security and visibility level
+## Milestone 2 - October 20th
+
 - [ ] Offline mode
-- [ ] CVS/vCard export
+- [ ] Security and visibility level
+
+## Milestone 3 - October 27th
+
+- [ ] Recommended connections
 - [ ] Search
   - [x] Basic search
   - [ ] Advanced/field search
   - [ ] Faceting
+- [ ] Apply for account
+- [ ] Forgotten password
+- [ ] CVS/vCard export
+
+## Milestone 4 - Nov 17th
+
+- [ ] Salesforce integration
+
+## Milestone 5 - Dec 1st
+
 - [ ] Localisation
   - [ ] User language selection
   - [ ] Automatic translation for profiles
-- [ ] Interface with other services
-  - [ ] Push notifications
-  - [ ] Salesforce
-  - [ ] FormAssembly(?)
+- [ ] Notifications
+- [ ] Analytics
 - [ ] Security
   - [ ] Phishing detection
   - [ ] Account lockout
   - [ ] Unusual IP detection?
-- [ ] Analytics
+
+## Already Done
+
+- [x] Authentication
+- [x] Edit profile
+- [x] Starred profiles
+- [x] Recently visited
+- [x] Messages
+- [x] Annotations
