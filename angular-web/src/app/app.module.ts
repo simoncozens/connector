@@ -18,6 +18,7 @@ import { EditProfileComponent } from './pages/editprofile/editprofile.component'
 
 import { PersonService } from './services/person.service';
 import { MessageService } from './services/message.service';
+import { InterComponentMessageService } from './services/intercomponentmessage.service';
 import { AuthModule } from './services/auth.module';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
@@ -51,7 +52,7 @@ import { ViewportModule } from 'angular2-viewport';
     ReactiveFormsModule,
     ViewportModule
   ],
-  providers: [ PersonService, AuthService, AuthGuard, MessageService ],
+  providers: [ PersonService, AuthService, AuthGuard, MessageService, InterComponentMessageService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,6 +7,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import {DomSanitizer} from '@angular/platform-browser';
 import { Person } from '../../classes/person';
 import * as moment from 'moment';
+import { InterComponentMessageService } from '../../services/intercomponentmessage.service';
 
 @Component({
   selector: 'messages-with',
@@ -23,6 +24,7 @@ export class MessagesWithComponent implements OnInit {
   params = {};
   moment;
   constructor(public messageService: MessageService,
+    public interComponentMessageService: InterComponentMessageService,
     private sanitizer:DomSanitizer,
     private route: ActivatedRoute) {
     this.moment = moment
@@ -89,6 +91,7 @@ export class MessagesWithComponent implements OnInit {
     this.messageService.readMessage(message.id).then(response => {
       console.log(response.json())
       message.status = response.status // Should be read. Might not be...
+      this.interComponentMessageService.sendMessage('navbar','check read');
     }
     ).catch(response => {
       // XXX Did not send

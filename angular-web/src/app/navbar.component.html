@@ -37,6 +37,7 @@
         <li routerLinkActive="active"><a  class="nav-link" routerLink="/messages/inbox" >
           <span class="glyphicon glyphicon-envelope" title="Messages"></span>
           <span class="hidden-xs hidden-sm">Messages</span>
+          <span class="badge" *ngIf="unreadCount &gt; 0">{{unreadCount}}</span>
         </a></li>
         <li routerLinkActive="active"><a  class="nav-link" routerLink="/notifications" >
           <span class="glyphicon glyphicon-bell" title="Notifications"></span>
