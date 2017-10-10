@@ -1,0 +1,4 @@
+[submodule "rails-backend"]
+	path = rails-backend
+	url = https://github.com/simoncozens/connector-backend.git
+	branch = master
