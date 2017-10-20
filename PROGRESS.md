@@ -3,11 +3,22 @@
 ## Milestone 2 - October 20th
 
 - [ ] Offline mode
+  - [x] Syncronise server profiles to encrypted database
+  - [x] Get profile(s) from local DB, not web
+  - [ ] Send back changed information (favourites, visits, annotations) to server
+  - [ ] Implement (basic) searching on mobile
+  - [ ] Cache messages locally
 - [ ] Security and visibility level
+  - [x] Show a profile from the point of view of the current user
+  - [ ] Add an interface to edit permissions for individual profile fields
+  - [ ] Admin interface to which fields are editable/viewable
+  - [ ] Allow admins to edit a user's memberships (gatherings etc.)
 
 ## Milestone 3 - October 27th
 
 - [ ] Recommended connections
+  - [ ] Add Elasticsearch backend to database
+  - [ ] Create a spatial index to find similar connections
 - [ ] Search
   - [x] Basic search
   - [ ] Advanced/field search
