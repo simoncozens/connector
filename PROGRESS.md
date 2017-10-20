@@ -30,6 +30,10 @@
 ## Milestone 4 - Nov 17th
 
 - [ ] Salesforce integration
+  - [x] Research API integration libraries: https://github.com/restforce/restforce
+  - [ ] Understand existing DB structure
+  - [ ] Send changes to SF
+  - [ ] Receive changes from SF
 
 ## Milestone 5 - Dec 1st
 
