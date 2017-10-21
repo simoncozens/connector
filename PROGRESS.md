@@ -38,7 +38,9 @@
 ## Milestone 5 - Dec 1st
 
 - [ ] Localisation
-  - [ ] User language selection
+  - [x] User language selection
+  - [x] Support for adding translations
+  - [ ] Choose and persist user language
   - [ ] Automatic translation for profiles
 - [ ] Notifications
 - [ ] Analytics
