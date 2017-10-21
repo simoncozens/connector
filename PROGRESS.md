@@ -26,6 +26,9 @@
 - [ ] Apply for account
 - [ ] Forgotten password
 - [ ] CVS/vCard export
+  - [ ] Build contact data out of profile
+  - [x] Send contact on click
+  - [x] Add contact to device's contacts
 
 ## Milestone 4 - Nov 17th
 
