@@ -49,7 +49,7 @@
 - [ ] Analytics https://ionicframework.com/docs/native/google-analytics/
 - [ ] Security
   - [ ] Phishing detection
-  - [ ] Account lockout https://github.com/NoamB/sorcery/wiki/Brute-force-protection
+  - [x] Account lockout
   - [ ] Unusual IP detection?
 
 ## Already Done
