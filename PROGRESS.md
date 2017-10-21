@@ -24,7 +24,7 @@
   - [ ] Advanced/field search
   - [ ] Faceting
 - [ ] Apply for account
-- [ ] Forgotten password
+- [ ] Forgotten password (https://github.com/NoamB/sorcery/wiki/Reset-password)
 - [ ] CVS/vCard export
   - [ ] Build contact data out of profile
   - [x] Send contact on click
@@ -46,10 +46,10 @@
   - [ ] Choose and persist user language
   - [ ] Automatic translation for profiles
 - [ ] Notifications
-- [ ] Analytics
+- [ ] Analytics https://ionicframework.com/docs/native/google-analytics/
 - [ ] Security
   - [ ] Phishing detection
-  - [ ] Account lockout
+  - [ ] Account lockout https://github.com/NoamB/sorcery/wiki/Brute-force-protection
   - [ ] Unusual IP detection?
 
 ## Already Done
