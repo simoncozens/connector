@@ -17,7 +17,7 @@
 ## Milestone 3 - October 27th
 
 - [ ] Recommended connections
-  - [ ] Add Elasticsearch backend to database
+  - [ ] Add Elasticsearch backend to database https://github.com/artburkart/mongo-connector-example-setup
   - [ ] Create a spatial index to find similar connections
 - [ ] Search
   - [x] Basic search
