@@ -52,6 +52,14 @@
   - [x] Account lockout
   - [ ] Unusual IP detection?
 
+## Needs to be ported from web to mobile app
+
+Do this next
+
+- [ ] Edit profile
+- [ ] Messages
+- [ ] Recently visited
+
 ## Already Done
 
 - [x] Authentication
