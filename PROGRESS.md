@@ -6,8 +6,6 @@
   - [x] Syncronise server profiles to encrypted database
   - [x] Get profile(s) from local DB, not web
   - [ ] Send back changed information (favourites, visits, annotations) to server
-  - [ ] Implement (basic) searching on mobile
-  - [ ] Cache messages locally
 - [ ] Security and visibility level
   - [x] Show a profile from the point of view of the current user
   - [ ] Add an interface to edit permissions for individual profile fields
@@ -57,8 +55,8 @@
 Do this next
 
 - [ ] Edit profile
-- [ ] Messages
-- [ ] Recently visited
+- [x] Messages
+- [x] Recently visited
 
 ## Already Done
 
@@ -68,3 +66,7 @@ Do this next
 - [x] Recently visited
 - [x] Messages
 - [x] Annotations
+
+## Putting off post first release
+
+- [ ] Implement (basic) searching on mobile
