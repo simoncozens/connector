@@ -8,7 +8,7 @@
   - [ ] Send back changed information (favourites, visits, annotations) to server
 - [ ] Security and visibility level
   - [x] Show a profile from the point of view of the current user
-  - [ ] Add an interface to edit permissions for individual profile fields
+  - [x] Add an interface to edit permissions for individual profile fields
   - [ ] Admin interface to which fields are editable/viewable
   - [ ] Allow admins to edit a user's memberships (gatherings etc.)
 
