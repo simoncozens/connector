@@ -16,7 +16,9 @@
 
 - [ ] Recommended connections
   - [ ] Add Elasticsearch backend to database https://github.com/artburkart/mongo-connector-example-setup
-  - [ ] Create a spatial index to find similar connections
+    - [ ] Create ES index
+    - [ ] Add ES functionality to Rails
+  - [ ] Use "More Like This" query to find similar connections
 - [ ] Search
   - [x] Basic search
   - [ ] Advanced/field search
