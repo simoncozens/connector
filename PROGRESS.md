@@ -2,10 +2,10 @@
 
 ## Milestone 2 - October 20th
 
-- [ ] Offline mode
+- [x] Offline mode
   - [x] Syncronise server profiles to encrypted database
   - [x] Get profile(s) from local DB, not web
-  - [ ] Send back changed information (favourites, visits, annotations) to server
+  - [x] Send back changed information (favourites, visits, annotations) to server
 - [ ] Security and visibility level
   - [x] Show a profile from the point of view of the current user
   - [x] Add an interface to edit permissions for individual profile fields
