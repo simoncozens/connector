@@ -6,6 +6,7 @@
   - [x] Syncronise server profiles to encrypted database
   - [x] Get profile(s) from local DB, not web
   - [x] Send back changed information (favourites, visits, annotations) to server
+  - [ ] Implement (basic) searching on mobile
 - [ ] Security and visibility level
   - [x] Show a profile from the point of view of the current user
   - [x] Add an interface to edit permissions for individual profile fields
@@ -52,14 +53,6 @@
   - [x] Account lockout
   - [ ] Unusual IP detection?
 
-## Needs to be ported from web to mobile app
-
-Do this next
-
-- [ ] Edit profile
-- [x] Messages
-- [x] Recently visited
-
 ## Already Done
 
 - [x] Authentication
@@ -71,4 +64,4 @@ Do this next
 
 ## Putting off post first release
 
-- [ ] Implement (basic) searching on mobile
+- [ ] Offline messages
