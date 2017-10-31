@@ -15,9 +15,9 @@
 ## Milestone 3 - October 27th
 
 - [ ] Recommended connections
-  - [ ] Add Elasticsearch backend to database https://github.com/artburkart/mongo-connector-example-setup
-    - [ ] Create ES index
-    - [ ] Add ES functionality to Rails
+  - [x] Add Elasticsearch backend to database https://github.com/artburkart/mongo-connector-example-setup
+    - [x] Create ES index
+    - [x] Add ES functionality to Rails
   - [ ] Use "More Like This" query to find similar connections
 - [ ] Search
   - [x] Basic search
