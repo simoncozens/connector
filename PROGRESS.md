@@ -6,7 +6,7 @@
   - [x] Syncronise server profiles to encrypted database
   - [x] Get profile(s) from local DB, not web
   - [x] Send back changed information (favourites, visits, annotations) to server
-  - [ ] Implement (basic) searching on mobile
+  - [x] Implement (basic) searching on mobile
 - [ ] Security and visibility level
   - [x] Show a profile from the point of view of the current user
   - [x] Add an interface to edit permissions for individual profile fields
@@ -15,11 +15,11 @@
 
 ## Milestone 3 - October 27th
 
-- [ ] Recommended connections
+- [x] Recommended connections
   - [x] Add Elasticsearch backend to database https://github.com/artburkart/mongo-connector-example-setup
     - [x] Create ES index
     - [x] Add ES functionality to Rails
-  - [ ] Use "More Like This" query to find similar connections
+  - [x] Use "More Like This" query to find similar connections
 - [ ] Search
   - [x] Basic search
   - [ ] Advanced/field search
