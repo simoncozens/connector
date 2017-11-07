@@ -47,6 +47,10 @@
   - [ ] Choose and persist user language
   - [ ] Automatic translation for profiles
 - [ ] Notifications
+  - [x] Set up iOS push notifications infrastructure
+  - [ ] Set up Android push notifications infrastructure
+  - [ ] Send notification on new mail
+  - [ ] Admin interface for sending messages to groups
 - [ ] Analytics https://ionicframework.com/docs/native/google-analytics/
 - [ ] Security
   - [ ] Phishing detection
