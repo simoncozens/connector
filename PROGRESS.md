@@ -11,7 +11,7 @@
   - [x] Show a profile from the point of view of the current user
   - [x] Add an interface to edit permissions for individual profile fields
   - [ ] Admin interface to which fields are editable/viewable
-  - [ ] Allow admins to edit a user's memberships (gatherings etc.)
+  - [x] Allow admins to edit a user's memberships (gatherings etc.) (via SF)
 
 ## Milestone 3 - October 27th
 
@@ -35,8 +35,8 @@
 
 - [ ] Salesforce integration
   - [x] Research API integration libraries: https://github.com/restforce/restforce
-  - [ ] Understand existing DB structure
-  - [ ] Send changes to SF
+  - [x] Understand existing DB structure
+  - [x] Send changes to SF
   - [ ] Receive changes from SF
 
 ## Milestone 5 - Dec 1st
@@ -60,7 +60,7 @@
 ## Already Done
 
 - [x] Authentication
-- [x] Edit profile
+- [ ] Edit profile (Needs re-checking)
 - [x] Starred profiles
 - [x] Recently visited
 - [x] Messages
