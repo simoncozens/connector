@@ -44,7 +44,7 @@
 - [ ] Localisation
   - [x] User language selection
   - [x] Support for adding translations
-  - [ ] Choose and persist user language
+  - [x] Choose and persist user language
   - [ ] Automatic translation for profiles
 - [ ] Notifications
   - [x] Set up iOS push notifications infrastructure
